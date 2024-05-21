@@ -1,2 +1,0 @@
-# Projeto-LSD
-Airfryer Controller

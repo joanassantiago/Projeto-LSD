@@ -1,0 +1,128 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity AirfryerFSM is
+    Port (
+        clk           : in  std_logic;
+        reset         : in  std_logic;
+        on_off        : in  std_logic;
+        run           : in  std_logic;
+        open_oven     : in  std_logic;
+        programs      : in  std_logic_vector(2 downto 0);
+        food_in       : out std_logic;
+        finish        : out std_logic;
+        cool_done     : out std_logic;
+        target_temp   : out std_logic_vector(7 downto 0);
+        current_temp  : in  std_logic_vector(7 downto 0);
+        temp_reached  : in  std_logic;
+        time_set      : out INTEGER range 0 to 255;
+        current_time  : in  INTEGER range 0 to 255
+    );
+end AirfryerFSM;
+
+architecture Behav of AirfryerFSM is
+    type State is (OFF, IDLE, PreHEAT, COOK, FINISH, COOL);
+    signal s_currentState, s_nextState : State;
+
+    -- Parâmetros de temperatura e tempo para cada programa
+    type ProgramType is record
+        temperature : integer;
+        time        : integer;
+    end record;
+
+    constant DEFAULT    : ProgramType := (200, 18);
+    constant USER       : ProgramType := (0, 0);  -- Pode ser ajustado pelo usuário
+    constant RISSOIS    : ProgramType := (180, 15);
+    constant BATATA     : ProgramType := (190, 25);
+    constant FILETES    : ProgramType := (170, 20);
+    constant HAMBURGUER : ProgramType := (180, 12);
+
+    signal selected_program : ProgramType := DEFAULT;
+
+begin
+
+    sync_proc : process(clk)
+    begin
+        if rising_edge(clk) then
+            if reset = '1' then
+                s_currentState <= OFF;
+            else
+                s_currentState <= s_nextState;
+            end if;
+        end if;
+    end process;
+
+    combproc : process(s_currentState, on_off, run, open_oven, programs, temp_reached, current_time)
+    begin
+        -- Valores padrões para evitar latchs
+        s_nextState <= s_currentState;
+        food_in <= '0';
+        finish <= '0';
+        cool_done <= '0';
+        target_temp <= x"00"; -- Default value
+        time_set <= 0; -- Default value
+
+        case s_currentState is
+            when OFF =>
+                if on_off = '1' then
+                    s_nextState <= IDLE;
+                end if;
+
+            when IDLE =>
+                if on_off = '0' then
+                    s_nextState <= OFF;
+                elsif run = '1' then
+                    -- Seleção do programa
+                    case programs is
+                        when "000" => selected_program <= DEFAULT;
+                        when "001" => selected_program <= USER;
+                        when "010" => selected_program <= RISSOIS;
+                        when "011" => selected_program <= BATATA;
+                        when "100" => selected_program <= FILETES;
+                        when "101" => selected_program <= HAMBURGUER;
+                        when others => selected_program <= DEFAULT;
+                    end case;
+
+                    target_temp <= to_stdlogicvector(to_unsigned(selected_program.temperature, 8));
+                    time_set <= selected_program.time;
+                    s_nextState <= PreHEAT;
+                end if;
+
+            when PreHEAT =>
+                if temp_reached = '1' then
+                    s_nextState <= COOK;
+                else
+                    s_nextState <= PreHEAT;
+                end if;
+
+            when COOK =>
+                if open_oven = '1' or current_time = 0 then
+                    s_nextState <= FINISH;
+                else
+                    food_in <= '1';
+                    s_nextState <= COOK;
+                end if;
+
+            when FINISH =>
+                finish <= '1';
+                if open_oven = '1' then
+                    s_nextState <= COOL;
+                else
+                    s_nextState <= FINISH;
+                end if;
+
+            when COOL =>
+                if current_time = 0 then
+                    cool_done <= '1';
+                    s_nextState <= OFF;
+                else
+                    s_nextState <= COOL;
+                end if;
+
+            when others =>
+                s_nextState <= OFF;
+        end case;
+    end process;
+
+end Behav;

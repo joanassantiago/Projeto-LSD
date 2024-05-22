@@ -1,0 +1,99 @@
+# Reading pref.tcl
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2023.3 win64 Jul 17 2023
+# //
+# //  Copyright 1991-2023 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do Airfryer_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Questa Intel Starter FPGA Edition-64 vmap 2023.3 Lib Mapping Utility 2023.07 Jul 17 2023
+# vmap work rtl_work 
+# Copying c:/intelfpga_lite/23.1std/questa_fse/win64/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd}
+# Questa Intel Starter FPGA Edition-64 vcom 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 23:15:49 on May 21,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity AirfryerFSM
+# -- Compiling architecture Behavioral of AirfryerFSM
+# End time: 23:15:49 on May 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+vcom -reportprogress 300 -work work {C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd}
+# Questa Intel Starter FPGA Edition-64 vcom 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 23:16:27 on May 21,2024
+# vcom -reportprogress 300 -work work C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_AirfryerFSM
+# -- Compiling architecture Behavioral of tb_AirfryerFSM
+# End time: 23:16:27 on May 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work {C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd}
+# Questa Intel Starter FPGA Edition-64 vcom 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 23:16:30 on May 21,2024
+# vcom -reportprogress 300 -work work C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_AirfryerFSM
+# -- Compiling architecture Behavioral of tb_AirfryerFSM
+# End time: 23:16:30 on May 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Load canceled
+vsim work.tb_airfryerfsm(behavioral)
+# vsim work.tb_airfryerfsm(behavioral) 
+# Start time: 23:17:41 on May 21,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_airfryerfsm(behavioral)#1
+# Loading work.airfryerfsm(behavioral)#1
+add wave -position end  sim:/tb_airfryerfsm/clk
+add wave -position end  sim:/tb_airfryerfsm/reset
+add wave -position end  sim:/tb_airfryerfsm/run
+add wave -position end  sim:/tb_airfryerfsm/open_oven
+add wave -position end  sim:/tb_airfryerfsm/temp_reached
+add wave -position end  sim:/tb_airfryerfsm/time_done
+add wave -position end  sim:/tb_airfryerfsm/cool_done
+add wave -position end  sim:/tb_airfryerfsm/program_select
+add wave -position end  sim:/tb_airfryerfsm/user_temp
+add wave -position end  sim:/tb_airfryerfsm/user_preheat_time
+add wave -position end  sim:/tb_airfryerfsm/user_cook_time
+add wave -position end  sim:/tb_airfryerfsm/state
+add wave -position end  sim:/tb_airfryerfsm/heating
+add wave -position end  sim:/tb_airfryerfsm/cooling
+add wave -position end  sim:/tb_airfryerfsm/food_in
+add wave -position end  sim:/tb_airfryerfsm/temp_set
+add wave -position end  sim:/tb_airfryerfsm/cook_time_set
+add wave -position end  sim:/tb_airfryerfsm/preheat_set
+add wave -position end  sim:/tb_airfryerfsm/clk_period
+run
+# ** Failure: End of Simulation
+#    Time: 900 ns  Iteration: 0  Process: /tb_airfryerfsm/stim_proc File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd
+# Break in Process stim_proc at C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd line 135
+# End time: 23:28:33 on May 21,2024, Elapsed time: 0:10:52
+# Errors: 1, Warnings: 0

@@ -1,0 +1,111 @@
+m255
+K4
+z2
+!s12c _opt
+Z0 !s99 nomlopt
+!s11e vcom 2023.3 2023.07, Jul 17 2023
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dC:/Users/joana/OneDrive/Ambiente de Trabalho/teste/simulation/questa
+T_opt
+!s110 1716329863
+VH_VlPlzgbXTSCO3nB5;3?0
+04 14 10 work tb_airfryerfsm behavioral 1
+=1-6c2408b32213-664d1d86-2dd-18e4
+R0
+!s12b OEM100
+!s124 OEM10U2 
+o-quiet -auto_acc_if_foreign -work work
+tCvgOpt 0
+n@_opt
+OL;O;2023.3;77
+Eairfryerfsm
+Z2 w1716329290
+Z3 DPx4 ieee 11 numeric_std 0 22 F8@]:i<mFK7<TjIzKcTGi0
+Z4 DPx3 std 6 textio 0 22 LS[?81n5ZHWBI9JkBZTV<2
+Z5 DPx4 ieee 14 std_logic_1164 0 22 6<US`=mgl_dFdCEFF7J=m1
+!i122 0
+R1
+Z6 8C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd
+Z7 FC:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd
+l0
+L5 1
+V]VHB1^4oi<lia=KFz:<zE2
+!s100 gfIkFNZ;bHOWCTIkC6;UN1
+Z8 OL;C;2023.3;77
+31
+Z9 !s110 1716329749
+!i10b 1
+Z10 !s108 1716329749.000000
+Z11 !s90 -reportprogress|300|-93|-work|work|C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd|
+Z12 !s107 C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd|
+!i113 0
+Z13 o-93 -work work
+Z14 tExplicit 1 CvgOpt 0
+Abehavioral
+R3
+R4
+R5
+DEx4 work 11 airfryerfsm 0 22 ]VHB1^4oi<lia=KFz:<zE2
+!i122 0
+l31
+L28 96
+Vfo_l6EeI:7a6UYan6bjT^2
+!s100 BS9PjE33Kb;0^W@fRTNl90
+R8
+31
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 0
+R13
+R14
+Etb_airfryerfsm
+Z15 w1716329667
+R3
+R4
+R5
+!i122 2
+R1
+Z16 8C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd
+Z17 FC:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd
+l0
+L5 1
+V6QcQ_f<V^?]@STNHIP6J@1
+!s100 K0]FKC4DNN2`AQc`]Q@RF2
+R8
+32
+Z18 !s110 1716329790
+!i10b 1
+Z19 !s108 1716329790.000000
+Z20 !s90 -reportprogress|300|-work|work|C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd|
+Z21 !s107 C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd|
+!i113 0
+Z22 o-work work
+R14
+Abehavioral
+R3
+R4
+R5
+DEx4 work 14 tb_airfryerfsm 0 22 6QcQ_f<V^?]@STNHIP6J@1
+!i122 2
+l57
+L8 131
+V;aTgLGnfUb=8ijRf`J5Hh3
+!s100 N:UYFC:k_n[:]Jz>0a:o@0
+R8
+32
+R18
+!i10b 1
+R19
+R20
+R21
+!i113 0
+R22
+R14

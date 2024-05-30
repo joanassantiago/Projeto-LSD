@@ -1,5 +1,5 @@
 Assembler report for Airfryer
-Tue May 21 23:09:12 2024
+Wed May 29 19:04:27 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -10,7 +10,7 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/output_files/Airfryer.sof
+  5. Assembler Device Options: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/output_files/Airfryer.sof
   6. Assembler Messages
 
 
@@ -38,9 +38,9 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue May 21 23:09:12 2024 ;
+; Assembler Status      ; Successful - Wed May 29 19:04:27 2024 ;
 ; Revision Name         ; Airfryer                              ;
-; Top-level Entity Name ; AirfryerFSM                           ;
+; Top-level Entity Name ; demo                                  ;
 ; Family                ; Cyclone IV E                          ;
 ; Device                ; EP4CE115F29C7                         ;
 +-----------------------+---------------------------------------+
@@ -53,23 +53,23 @@ https://fpgasoftware.intel.com/eula.
 +--------+---------+---------------+
 
 
-+------------------------------------------------------------------------------+
-; Assembler Generated Files                                                    ;
-+------------------------------------------------------------------------------+
-; File Name                                                                    ;
-+------------------------------------------------------------------------------+
-; C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/output_files/Airfryer.sof ;
-+------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------+
+; Assembler Generated Files                                                          ;
++------------------------------------------------------------------------------------+
+; File Name                                                                          ;
++------------------------------------------------------------------------------------+
+; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/output_files/Airfryer.sof ;
++------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/output_files/Airfryer.sof ;
-+----------------+---------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                               ;
-+----------------+---------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x0056ECDD                                                                            ;
-; Checksum       ; 0x0056ECDD                                                                            ;
-+----------------+---------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/output_files/Airfryer.sof ;
++----------------+---------------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                                     ;
++----------------+---------------------------------------------------------------------------------------------+
+; JTAG usercode  ; 0x0057EFDE                                                                                  ;
+; Checksum       ; 0x0057EFDE                                                                                  ;
++----------------+---------------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -78,15 +78,15 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Tue May 21 23:09:07 2024
+    Info: Processing started: Wed May 29 19:04:25 2024
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Airfryer -c Airfryer
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4706 megabytes
-    Info: Processing ended: Tue May 21 23:09:12 2024
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Processing ended: Wed May 29 19:04:27 2024
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 

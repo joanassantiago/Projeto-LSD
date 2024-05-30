@@ -1,5 +1,5 @@
 
-State Machine - |AirfryerFSM|current_state
+State Machine - |demo|AirfryerFSM:inst|current_state
 Name current_state.COOL current_state.FINISH current_state.COOK current_state.PreHEAT current_state.IDLE 
 current_state.IDLE 0 0 0 0 0 
 current_state.PreHEAT 0 0 0 1 1 

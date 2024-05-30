@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Airfryer
-Tue May 21 23:15:17 2024
+Wed May 29 19:04:11 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -13,13 +13,19 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |AirfryerFSM|current_state
-  9. User-Specified and Inferred Latches
+  8. State Machine - |demo|AirfryerFSM:inst|current_state
+  9. Registers Removed During Synthesis
  10. General Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Post-Synthesis Netlist Statistics for Top Partition
- 13. Elapsed Time Per Partition
- 14. Analysis & Synthesis Messages
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: ClkDividerN:inst3
+ 14. Parameter Settings for User Entity Instance: DebounceUnit:inst4
+ 15. Parameter Settings for Inferred Entity Instance: TimerTime:inst25|lpm_divide:Mod1
+ 16. Parameter Settings for Inferred Entity Instance: TimerTime:inst25|lpm_divide:Mod0
+ 17. Parameter Settings for Inferred Entity Instance: TimerTime:inst25|lpm_divide:Div0
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
 
 
 
@@ -46,16 +52,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue May 21 23:15:17 2024          ;
+; Analysis & Synthesis Status        ; Successful - Wed May 29 19:04:11 2024          ;
 ; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                      ; Airfryer                                       ;
-; Top-level Entity Name              ; AirfryerFSM                                    ;
+; Top-level Entity Name              ; demo                                           ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 68                                             ;
-;     Total combinational functions  ; 68                                             ;
-;     Dedicated logic registers      ; 5                                              ;
-; Total registers                    ; 5                                              ;
-; Total pins                         ; 64                                             ;
+; Total logic elements               ; 264                                            ;
+;     Total combinational functions  ; 263                                            ;
+;     Dedicated logic registers      ; 42                                             ;
+; Total registers                    ; 42                                             ;
+; Total pins                         ; 50                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -69,7 +75,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                            ; AirfryerFSM        ; Airfryer           ;
+; Top-level entity name                                            ; demo               ; Airfryer           ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -166,60 +172,96 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                              ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                       ; Library ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------------+---------+
-; AirfryerFSM.vhd                  ; yes             ; User VHDL File  ; C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd ;         ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                  ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                        ; Library ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
+; AirfryerFSM.vhd                  ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd            ;         ;
+; TemperatureControl.vhd           ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TemperatureControl.vhd     ;         ;
+; TimeControl.vhd                  ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimeControl.vhd            ;         ;
+; TimerTime.vhd                    ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd              ;         ;
+; TimerTemperature.vhd             ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTemperature.vhd       ;         ;
+; DebounceUnit.vhd                 ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/DebounceUnit.vhd           ;         ;
+; Bin7SegDecoder.vhd               ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/Bin7SegDecoder.vhd         ;         ;
+; ClkDividerN.vhd                  ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/ClkDividerN.vhd            ;         ;
+; output_files/demo.bdf            ; yes             ; User Block Diagram/Schematic File  ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/output_files/demo.bdf      ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_divide.tdf            ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/abs_divider.inc           ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sign_div_unsign.inc       ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc            ;         ;
+; db/lpm_divide_q9m.tdf            ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/lpm_divide_q9m.tdf      ;         ;
+; db/sign_div_unsign_fkh.tdf       ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/sign_div_unsign_fkh.tdf ;         ;
+; db/alt_u_div_i4f.tdf             ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/alt_u_div_i4f.tdf       ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/add_sub_7pc.tdf         ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/add_sub_8pc.tdf         ;         ;
+; db/lpm_divide_jhm.tdf            ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/lpm_divide_jhm.tdf      ;         ;
+; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/sign_div_unsign_bkh.tdf ;         ;
+; db/alt_u_div_a4f.tdf             ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/alt_u_div_a4f.tdf       ;         ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                           ;
-+---------------------------------------------+-------------------------+
-; Resource                                    ; Usage                   ;
-+---------------------------------------------+-------------------------+
-; Estimated Total logic elements              ; 68                      ;
-;                                             ;                         ;
-; Total combinational functions               ; 68                      ;
-; Logic element usage by number of LUT inputs ;                         ;
-;     -- 4 input functions                    ; 34                      ;
-;     -- 3 input functions                    ; 27                      ;
-;     -- <=2 input functions                  ; 7                       ;
-;                                             ;                         ;
-; Logic elements by mode                      ;                         ;
-;     -- normal mode                          ; 68                      ;
-;     -- arithmetic mode                      ; 0                       ;
-;                                             ;                         ;
-; Total registers                             ; 5                       ;
-;     -- Dedicated logic registers            ; 5                       ;
-;     -- I/O registers                        ; 0                       ;
-;                                             ;                         ;
-; I/O pins                                    ; 64                      ;
-;                                             ;                         ;
-; Embedded Multiplier 9-bit elements          ; 0                       ;
-;                                             ;                         ;
-; Maximum fan-out node                        ; program_select[1]~input ;
-; Maximum fan-out                             ; 25                      ;
-; Total fan-out                               ; 340                     ;
-; Average fan-out                             ; 1.69                    ;
-+---------------------------------------------+-------------------------+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimated Total logic elements              ; 264            ;
+;                                             ;                ;
+; Total combinational functions               ; 263            ;
+; Logic element usage by number of LUT inputs ;                ;
+;     -- 4 input functions                    ; 63             ;
+;     -- 3 input functions                    ; 62             ;
+;     -- <=2 input functions                  ; 138            ;
+;                                             ;                ;
+; Logic elements by mode                      ;                ;
+;     -- normal mode                          ; 171            ;
+;     -- arithmetic mode                      ; 92             ;
+;                                             ;                ;
+; Total registers                             ; 42             ;
+;     -- Dedicated logic registers            ; 42             ;
+;     -- I/O registers                        ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 50             ;
+;                                             ;                ;
+; Embedded Multiplier 9-bit elements          ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 32             ;
+; Total fan-out                               ; 847            ;
+; Average fan-out                             ; 2.09           ;
++---------------------------------------------+----------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                      ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
-; |AirfryerFSM               ; 68 (68)             ; 5 (5)                     ; 0           ; 0            ; 0       ; 0         ; 64   ; 0            ; |AirfryerFSM        ; AirfryerFSM ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                    ; Entity Name         ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |demo                                     ; 263 (0)             ; 42 (0)                    ; 0           ; 0            ; 0       ; 0         ; 50   ; 0            ; |demo                                                                                                                  ; demo                ; work         ;
+;    |Bin7SegDecoder:inst11|                ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|Bin7SegDecoder:inst11                                                                                            ; Bin7SegDecoder      ; work         ;
+;    |Bin7SegDecoder:inst2|                 ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|Bin7SegDecoder:inst2                                                                                             ; Bin7SegDecoder      ; work         ;
+;    |ClkDividerN:inst3|                    ; 57 (57)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|ClkDividerN:inst3                                                                                                ; ClkDividerN         ; work         ;
+;    |TimerTime:inst25|                     ; 192 (13)            ; 10 (10)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25                                                                                                 ; TimerTime           ; work         ;
+;       |lpm_divide:Div0|                   ; 60 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_jhm:auto_generated|  ; 60 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Div0|lpm_divide_jhm:auto_generated                                                   ; lpm_divide_jhm      ; work         ;
+;             |sign_div_unsign_bkh:divider| ; 60 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Div0|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh ; work         ;
+;                |alt_u_div_a4f:divider|    ; 60 (60)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Div0|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider ; alt_u_div_a4f       ; work         ;
+;       |lpm_divide:Mod0|                   ; 42 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_q9m:auto_generated|  ; 42 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Mod0|lpm_divide_q9m:auto_generated                                                   ; lpm_divide_q9m      ; work         ;
+;             |sign_div_unsign_fkh:divider| ; 42 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Mod0|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider                       ; sign_div_unsign_fkh ; work         ;
+;                |alt_u_div_i4f:divider|    ; 42 (42)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Mod0|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider ; alt_u_div_i4f       ; work         ;
+;       |lpm_divide:Mod1|                   ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Mod1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_q9m:auto_generated|  ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Mod1|lpm_divide_q9m:auto_generated                                                   ; lpm_divide_q9m      ; work         ;
+;             |sign_div_unsign_fkh:divider| ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Mod1|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider                       ; sign_div_unsign_fkh ; work         ;
+;                |alt_u_div_i4f:divider|    ; 77 (77)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|TimerTime:inst25|lpm_divide:Mod1|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider ; alt_u_div_i4f       ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
 +-------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |AirfryerFSM|current_state                                                                                          ;
+; State Machine - |demo|AirfryerFSM:inst|current_state                                                                                ;
 +-----------------------+--------------------+----------------------+--------------------+-----------------------+--------------------+
 ; Name                  ; current_state.COOL ; current_state.FINISH ; current_state.COOK ; current_state.PreHEAT ; current_state.IDLE ;
 +-----------------------+--------------------+----------------------+--------------------+-----------------------+--------------------+
@@ -231,38 +273,19 @@ Encoding Type:  One-Hot
 +-----------------------+--------------------+----------------------+--------------------+-----------------------+--------------------+
 
 
-+----------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                ;
-+-----------------------------------------------------+---------------------+------------------------+
-; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
-+-----------------------------------------------------+---------------------+------------------------+
-; temp_set[0]$latch                                   ; Selector1           ; yes                    ;
-; temp_set[1]$latch                                   ; Selector1           ; yes                    ;
-; temp_set[2]$latch                                   ; Selector1           ; yes                    ;
-; temp_set[3]$latch                                   ; Selector1           ; yes                    ;
-; temp_set[4]$latch                                   ; Selector1           ; yes                    ;
-; temp_set[5]$latch                                   ; Selector1           ; yes                    ;
-; temp_set[6]$latch                                   ; Selector1           ; yes                    ;
-; temp_set[7]$latch                                   ; Selector1           ; yes                    ;
-; cook_time_set[0]$latch                              ; Selector1           ; yes                    ;
-; cook_time_set[1]$latch                              ; Selector1           ; yes                    ;
-; cook_time_set[2]$latch                              ; Selector1           ; yes                    ;
-; cook_time_set[3]$latch                              ; Selector1           ; yes                    ;
-; cook_time_set[4]$latch                              ; Selector1           ; yes                    ;
-; cook_time_set[5]$latch                              ; Selector1           ; yes                    ;
-; cook_time_set[6]$latch                              ; Selector1           ; yes                    ;
-; cook_time_set[7]$latch                              ; Selector1           ; yes                    ;
-; preheat_set[0]$latch                                ; preheat_set[7]      ; yes                    ;
-; preheat_set[1]$latch                                ; preheat_set[7]      ; yes                    ;
-; preheat_set[2]$latch                                ; preheat_set[7]      ; yes                    ;
-; preheat_set[3]$latch                                ; preheat_set[7]      ; yes                    ;
-; preheat_set[4]$latch                                ; preheat_set[7]      ; yes                    ;
-; preheat_set[5]$latch                                ; preheat_set[7]      ; yes                    ;
-; preheat_set[6]$latch                                ; preheat_set[7]      ; yes                    ;
-; preheat_set[7]$latch                                ; preheat_set[7]      ; yes                    ;
-; Number of user-specified and inferred latches = 24  ;                     ;                        ;
-+-----------------------------------------------------+---------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; TimerTemperature:inst10|s_counter[0..7] ; Stuck at GND due to stuck port data_in ;
+; AirfryerFSM:inst|current_state.IDLE     ; Lost fanout                            ;
+; AirfryerFSM:inst|current_state.PreHEAT  ; Lost fanout                            ;
+; AirfryerFSM:inst|current_state.COOK     ; Lost fanout                            ;
+; AirfryerFSM:inst|current_state.FINISH   ; Lost fanout                            ;
+; AirfryerFSM:inst|current_state.COOL     ; Lost fanout                            ;
+; Total Number of Removed Registers = 13  ;                                        ;
++-----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -270,26 +293,125 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 5     ;
+; Total registers                              ; 42    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 5     ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 10    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 8:1                ; 11 bits   ; 55 LEs        ; 44 LEs               ; 11 LEs                 ; No         ; |AirfryerFSM|Mux6          ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |AirfryerFSM|Mux20         ;
-; 10:1               ; 3 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; No         ; |AirfryerFSM|Selector0     ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |AirfryerFSM|Selector1     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; TimerTime:inst25|preheat_active        ; 2       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |demo|TimerTime:inst25|counter[7] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ClkDividerN:inst3 ;
++----------------+----------+------------------------------------+
+; Parameter Name ; Value    ; Type                               ;
++----------------+----------+------------------------------------+
+; k              ; 50000000 ; Signed Integer                     ;
++----------------+----------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DebounceUnit:inst4 ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; khzclkfreq     ; 50000 ; Signed Integer                         ;
+; msecmininwidth ; 100   ; Signed Integer                         ;
+; inpolarity     ; '1'   ; Enumerated                             ;
+; outpolarity    ; '1'   ; Enumerated                             ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: TimerTime:inst25|lpm_divide:Mod1 ;
++------------------------+----------------+-----------------------------------------+
+; Parameter Name         ; Value          ; Type                                    ;
++------------------------+----------------+-----------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                 ;
+; LPM_WIDTHD             ; 8              ; Untyped                                 ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_PIPELINE           ; 0              ; Untyped                                 ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                 ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                 ;
+; CBXI_PARAMETER         ; lpm_divide_q9m ; Untyped                                 ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                 ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                 ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                          ;
++------------------------+----------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: TimerTime:inst25|lpm_divide:Mod0 ;
++------------------------+----------------+-----------------------------------------+
+; Parameter Name         ; Value          ; Type                                    ;
++------------------------+----------------+-----------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                 ;
+; LPM_WIDTHD             ; 8              ; Untyped                                 ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_PIPELINE           ; 0              ; Untyped                                 ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                 ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                 ;
+; CBXI_PARAMETER         ; lpm_divide_q9m ; Untyped                                 ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                 ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                 ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                          ;
++------------------------+----------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: TimerTime:inst25|lpm_divide:Div0 ;
++------------------------+----------------+-----------------------------------------+
+; Parameter Name         ; Value          ; Type                                    ;
++------------------------+----------------+-----------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                 ;
+; LPM_WIDTHD             ; 4              ; Untyped                                 ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_PIPELINE           ; 0              ; Untyped                                 ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                 ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                 ;
+; CBXI_PARAMETER         ; lpm_divide_jhm ; Untyped                                 ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                 ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                 ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                          ;
++------------------------+----------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------------+
@@ -297,18 +419,23 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 64                          ;
-; cycloneiii_ff         ; 5                           ;
-;     CLR               ; 5                           ;
-; cycloneiii_lcell_comb ; 70                          ;
-;     normal            ; 70                          ;
-;         1 data inputs ; 2                           ;
-;         2 data inputs ; 7                           ;
-;         3 data inputs ; 27                          ;
-;         4 data inputs ; 34                          ;
+; boundary_port         ; 50                          ;
+; cycloneiii_ff         ; 42                          ;
+;     ENA               ; 10                          ;
+;     plain             ; 32                          ;
+; cycloneiii_lcell_comb ; 268                         ;
+;     arith             ; 92                          ;
+;         2 data inputs ; 45                          ;
+;         3 data inputs ; 47                          ;
+;     normal            ; 176                         ;
+;         0 data inputs ; 14                          ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 78                          ;
+;         3 data inputs ; 15                          ;
+;         4 data inputs ; 63                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 3.00                        ;
-; Average LUT depth     ; 2.03                        ;
+; Max LUT depth         ; 18.00                       ;
+; Average LUT depth     ; 11.16                       ;
 +-----------------------+-----------------------------+
 
 
@@ -327,92 +454,149 @@ Note: All latches listed above may not be present at the end of synthesis due to
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Tue May 21 23:15:03 2024
+    Info: Processing started: Wed May 29 19:04:03 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Airfryer -c Airfryer
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file airfryerfsm.vhd
-    Info (12022): Found design unit 1: AirfryerFSM-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 28
-    Info (12023): Found entity 1: AirfryerFSM File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 5
+    Info (12022): Found design unit 1: AirfryerFSM-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd Line: 31
+    Info (12023): Found entity 1: AirfryerFSM File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file temperaturecontrol.vhd
-    Info (12022): Found design unit 1: TemperatureControl-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/TemperatureControl.vhd Line: 17
-    Info (12023): Found entity 1: TemperatureControl File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/TemperatureControl.vhd Line: 5
+    Info (12022): Found design unit 1: TemperatureControl-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TemperatureControl.vhd Line: 16
+    Info (12023): Found entity 1: TemperatureControl File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TemperatureControl.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file timecontrol.vhd
-    Info (12022): Found design unit 1: TimeControl-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/TimeControl.vhd Line: 15
-    Info (12023): Found entity 1: TimeControl File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/TimeControl.vhd Line: 5
+    Info (12022): Found design unit 1: TimeControl-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimeControl.vhd Line: 17
+    Info (12023): Found entity 1: TimeControl File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimeControl.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file timertime.vhd
-    Info (12022): Found design unit 1: TimerTime-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/TimerTime.vhd Line: 16
-    Info (12023): Found entity 1: TimerTime File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/TimerTime.vhd Line: 5
+    Info (12022): Found design unit 1: TimerTime-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 20
+    Info (12023): Found entity 1: TimerTime File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file timertemperature.vhd
-    Info (12022): Found design unit 1: TimerTemperature-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/TimerTemperature.vhd Line: 17
-    Info (12023): Found entity 1: TimerTemperature File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/TimerTemperature.vhd Line: 5
+    Info (12022): Found design unit 1: TimerTemperature-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTemperature.vhd Line: 17
+    Info (12023): Found entity 1: TimerTemperature File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTemperature.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file debounceunit.vhd
-    Info (12022): Found design unit 1: DebounceUnit-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/DebounceUnit.vhd Line: 15
-    Info (12023): Found entity 1: DebounceUnit File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/DebounceUnit.vhd Line: 5
+    Info (12022): Found design unit 1: DebounceUnit-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/DebounceUnit.vhd Line: 15
+    Info (12023): Found entity 1: DebounceUnit File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/DebounceUnit.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file bin7segdecoder.vhd
-    Info (12022): Found design unit 1: Bin7SegDecoder-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/Bin7SegDecoder.vhd Line: 9
-    Info (12023): Found entity 1: Bin7SegDecoder File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/Bin7SegDecoder.vhd Line: 4
+    Info (12022): Found design unit 1: Bin7SegDecoder-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/Bin7SegDecoder.vhd Line: 9
+    Info (12023): Found entity 1: Bin7SegDecoder File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/Bin7SegDecoder.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file clkdividern.vhd
-    Info (12022): Found design unit 1: ClkDividerN-RTL File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/ClkDividerN.vhd Line: 11
-    Info (12023): Found entity 1: ClkDividerN File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/ClkDividerN.vhd Line: 5
+    Info (12022): Found design unit 1: ClkDividerN-RTL File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/ClkDividerN.vhd Line: 11
+    Info (12023): Found entity 1: ClkDividerN File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/ClkDividerN.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file tb_airfryerfsm.vhd
-    Info (12022): Found design unit 1: tb_AirfryerFSM-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd Line: 8
-    Info (12023): Found entity 1: tb_AirfryerFSM File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/tb_AirfryerFSM.vhd Line: 5
-Info (12127): Elaborating entity "AirfryerFSM" for the top level hierarchy
-Warning (10631): VHDL Process Statement warning at AirfryerFSM.vhd(41): inferring latch(es) for signal or variable "temp_set", which holds its previous value in one or more paths through the process File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Warning (10631): VHDL Process Statement warning at AirfryerFSM.vhd(41): inferring latch(es) for signal or variable "cook_time_set", which holds its previous value in one or more paths through the process File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Warning (10631): VHDL Process Statement warning at AirfryerFSM.vhd(41): inferring latch(es) for signal or variable "preheat_set", which holds its previous value in one or more paths through the process File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "preheat_set[0]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "preheat_set[1]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "preheat_set[2]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "preheat_set[3]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "preheat_set[4]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "preheat_set[5]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "preheat_set[6]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "preheat_set[7]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "cook_time_set[0]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "cook_time_set[1]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "cook_time_set[2]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "cook_time_set[3]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "cook_time_set[4]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "cook_time_set[5]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "cook_time_set[6]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "cook_time_set[7]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "temp_set[0]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "temp_set[1]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "temp_set[2]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "temp_set[3]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "temp_set[4]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "temp_set[5]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "temp_set[6]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Info (10041): Inferred latch for "temp_set[7]" at AirfryerFSM.vhd(41) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-Warning (13012): Latch preheat_set[0]$latch has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal program_select[0] File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 14
-Warning (13012): Latch preheat_set[1]$latch has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal program_select[0] File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 14
-Warning (13012): Latch preheat_set[2]$latch has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal program_select[0] File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 14
-Warning (13012): Latch preheat_set[3]$latch has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal program_select[0] File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 14
-Warning (13012): Latch preheat_set[4]$latch has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal program_select[0] File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 14
-Warning (13012): Latch preheat_set[5]$latch has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal program_select[0] File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 14
-Warning (13012): Latch preheat_set[6]$latch has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal program_select[0] File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 14
-Warning (13012): Latch preheat_set[7]$latch has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 41
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal program_select[0] File: C:/Users/joana/OneDrive/Ambiente de Trabalho/teste/AirfryerFSM.vhd Line: 14
+    Info (12022): Found design unit 1: tb_AirfryerFSM-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/tb_AirfryerFSM.vhd Line: 8
+    Info (12023): Found entity 1: tb_AirfryerFSM File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/tb_AirfryerFSM.vhd Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file output_files/demo.bdf
+    Info (12023): Found entity 1: demo
+Info (12021): Found 2 design units, including 1 entities, in source file pulsegen.vhd
+    Info (12022): Found design unit 1: PulseGen-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/PulseGen.vhd Line: 12
+    Info (12023): Found entity 1: PulseGen File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/PulseGen.vhd Line: 5
+Info (12127): Elaborating entity "demo" for the top level hierarchy
+Warning (275011): Block or symbol "Bin7SegDecoder" of instance "inst2" overlaps another block or symbol
+Warning (275011): Block or symbol "Bin7SegDecoder" of instance "inst11" overlaps another block or symbol
+Warning (275089): Not all bits in bus "SW[7..0]" are used
+Warning (275080): Converted elements in bus name "SW" using legacy naming rules. Make any assignments on the new names, not on the original names.
+    Warning (275081): Converted element name(s) from "SW[6..4]" to "SW6..4"
+    Warning (275081): Converted element name(s) from "SW[1]" to "SW1"
+    Warning (275081): Converted element name(s) from "SW[7]" to "SW7"
+    Warning (275081): Converted element name(s) from "SW[0]" to "SW0"
+Info (12128): Elaborating entity "Bin7SegDecoder" for hierarchy "Bin7SegDecoder:inst12"
+Info (12128): Elaborating entity "TimerTemperature" for hierarchy "TimerTemperature:inst10"
+Info (12128): Elaborating entity "ClkDividerN" for hierarchy "ClkDividerN:inst3"
+Info (12128): Elaborating entity "AirfryerFSM" for hierarchy "AirfryerFSM:inst"
+Warning (10541): VHDL Signal Declaration warning at AirfryerFSM.vhd(25): used implicit default value for signal "temp_set" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd Line: 25
+Warning (10541): VHDL Signal Declaration warning at AirfryerFSM.vhd(26): used implicit default value for signal "cook_time_set" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd Line: 26
+Warning (10541): VHDL Signal Declaration warning at AirfryerFSM.vhd(27): used implicit default value for signal "preheat_set" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd Line: 27
+Warning (10036): Verilog HDL or VHDL warning at AirfryerFSM.vhd(33): object "current_state" assigned a value but never read File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd Line: 33
+Warning (10541): VHDL Signal Declaration warning at AirfryerFSM.vhd(33): used implicit default value for signal "next_state" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd Line: 33
+Warning (10036): Verilog HDL or VHDL warning at AirfryerFSM.vhd(34): object "openOven_last" assigned a value but never read File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd Line: 34
+Warning (10492): VHDL Process Statement warning at AirfryerFSM.vhd(64): signal "on_off" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd Line: 64
+Info (12128): Elaborating entity "TimerTime" for hierarchy "TimerTime:inst25"
+Info (12128): Elaborating entity "TimeControl" for hierarchy "TimeControl:inst22"
+Info (12128): Elaborating entity "TemperatureControl" for hierarchy "TemperatureControl:inst17"
+Info (12128): Elaborating entity "DebounceUnit" for hierarchy "DebounceUnit:inst4"
+Info (278001): Inferred 3 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "TimerTime:inst25|Mod1" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 75
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "TimerTime:inst25|Mod0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 74
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "TimerTime:inst25|Div0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 74
+Info (12130): Elaborated megafunction instantiation "TimerTime:inst25|lpm_divide:Mod1" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 75
+Info (12133): Instantiated megafunction "TimerTime:inst25|lpm_divide:Mod1" with the following parameter: File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 75
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "8"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_q9m.tdf
+    Info (12023): Found entity 1: lpm_divide_q9m File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/lpm_divide_q9m.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_fkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_fkh File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/sign_div_unsign_fkh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_i4f.tdf
+    Info (12023): Found entity 1: alt_u_div_i4f File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/alt_u_div_i4f.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/add_sub_7pc.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/add_sub_8pc.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "TimerTime:inst25|lpm_divide:Mod0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 74
+Info (12133): Instantiated megafunction "TimerTime:inst25|lpm_divide:Mod0" with the following parameter: File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 74
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "8"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12130): Elaborated megafunction instantiation "TimerTime:inst25|lpm_divide:Div0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 74
+Info (12133): Instantiated megafunction "TimerTime:inst25|lpm_divide:Div0" with the following parameter: File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/TimerTime.vhd Line: 74
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_jhm.tdf
+    Info (12023): Found entity 1: lpm_divide_jhm File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/lpm_divide_jhm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_bkh File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/sign_div_unsign_bkh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_a4f.tdf
+    Info (12023): Found entity 1: alt_u_div_a4f File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/db/alt_u_div_a4f.tdf Line: 27
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[6]" is stuck at VCC
+    Warning (13410): Pin "HEX0[5]" is stuck at GND
+    Warning (13410): Pin "HEX0[4]" is stuck at GND
+    Warning (13410): Pin "HEX0[3]" is stuck at GND
+    Warning (13410): Pin "HEX0[2]" is stuck at GND
+    Warning (13410): Pin "HEX0[1]" is stuck at GND
+    Warning (13410): Pin "HEX0[0]" is stuck at GND
+    Warning (13410): Pin "HEX1[6]" is stuck at VCC
+    Warning (13410): Pin "HEX1[5]" is stuck at GND
+    Warning (13410): Pin "HEX1[4]" is stuck at GND
+    Warning (13410): Pin "HEX1[3]" is stuck at GND
+    Warning (13410): Pin "HEX1[2]" is stuck at GND
+    Warning (13410): Pin "HEX1[1]" is stuck at GND
+    Warning (13410): Pin "HEX1[0]" is stuck at GND
+    Warning (13410): Pin "HEX2[6]" is stuck at VCC
+    Warning (13410): Pin "HEX2[5]" is stuck at GND
+    Warning (13410): Pin "HEX2[4]" is stuck at GND
+    Warning (13410): Pin "HEX2[3]" is stuck at GND
+    Warning (13410): Pin "HEX2[2]" is stuck at GND
+    Warning (13410): Pin "HEX2[1]" is stuck at GND
+    Warning (13410): Pin "HEX2[0]" is stuck at GND
+    Warning (13410): Pin "LEDG[0]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 5 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 132 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 34 input pins
-    Info (21059): Implemented 30 output pins
-    Info (21061): Implemented 68 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 20 warnings
-    Info: Peak virtual memory: 4885 megabytes
-    Info: Processing ended: Tue May 21 23:15:17 2024
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:22
+Warning (21074): Design contains 9 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW1"
+    Warning (15610): No output dependent on input pin "SW6"
+    Warning (15610): No output dependent on input pin "SW5"
+    Warning (15610): No output dependent on input pin "SW4"
+    Warning (15610): No output dependent on input pin "SW7"
+    Warning (15610): No output dependent on input pin "KEY[3]"
+    Warning (15610): No output dependent on input pin "KEY[2]"
+    Warning (15610): No output dependent on input pin "KEY[1]"
+    Warning (15610): No output dependent on input pin "KEY[0]"
+Info (21057): Implemented 314 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
+    Info (21059): Implemented 39 output pins
+    Info (21061): Implemented 264 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 49 warnings
+    Info: Peak virtual memory: 4895 megabytes
+    Info: Processing ended: Wed May 29 19:04:11 2024
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:09
 
 

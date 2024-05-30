@@ -4,259 +4,79 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "state[0]",
+					"name" : "HEX4[6]",
 					"strict" : false
 				},
 				{
-					"name" : "state[1]",
+					"name" : "HEX4[5]",
 					"strict" : false
 				},
 				{
-					"name" : "state[2]",
+					"name" : "HEX4[4]",
 					"strict" : false
 				},
 				{
-					"name" : "heating",
+					"name" : "HEX4[3]",
 					"strict" : false
 				},
 				{
-					"name" : "cooling",
+					"name" : "HEX4[2]",
 					"strict" : false
 				},
 				{
-					"name" : "food_in",
+					"name" : "HEX4[1]",
 					"strict" : false
 				},
 				{
-					"name" : "temp_set[0]",
+					"name" : "HEX4[0]",
 					"strict" : false
 				},
 				{
-					"name" : "temp_set[1]",
+					"name" : "HEX5[6]",
 					"strict" : false
 				},
 				{
-					"name" : "temp_set[2]",
+					"name" : "HEX5[5]",
 					"strict" : false
 				},
 				{
-					"name" : "temp_set[3]",
+					"name" : "HEX5[4]",
 					"strict" : false
 				},
 				{
-					"name" : "temp_set[4]",
+					"name" : "HEX5[3]",
 					"strict" : false
 				},
 				{
-					"name" : "temp_set[5]",
+					"name" : "HEX5[2]",
 					"strict" : false
 				},
 				{
-					"name" : "temp_set[6]",
+					"name" : "HEX5[1]",
 					"strict" : false
 				},
 				{
-					"name" : "temp_set[7]",
+					"name" : "HEX5[0]",
 					"strict" : false
 				},
 				{
-					"name" : "cook_time_set[0]",
+					"name" : "LEDR[2]",
 					"strict" : false
 				},
 				{
-					"name" : "cook_time_set[1]",
+					"name" : "LEDR[1]",
 					"strict" : false
 				},
 				{
-					"name" : "cook_time_set[2]",
+					"name" : "LEDR[0]",
 					"strict" : false
 				},
 				{
-					"name" : "cook_time_set[3]",
+					"name" : "SW0",
 					"strict" : false
 				},
 				{
-					"name" : "cook_time_set[4]",
-					"strict" : false
-				},
-				{
-					"name" : "cook_time_set[5]",
-					"strict" : false
-				},
-				{
-					"name" : "cook_time_set[6]",
-					"strict" : false
-				},
-				{
-					"name" : "cook_time_set[7]",
-					"strict" : false
-				},
-				{
-					"name" : "preheat_set[0]",
-					"strict" : false
-				},
-				{
-					"name" : "preheat_set[1]",
-					"strict" : false
-				},
-				{
-					"name" : "preheat_set[2]",
-					"strict" : false
-				},
-				{
-					"name" : "preheat_set[3]",
-					"strict" : false
-				},
-				{
-					"name" : "preheat_set[4]",
-					"strict" : false
-				},
-				{
-					"name" : "preheat_set[5]",
-					"strict" : false
-				},
-				{
-					"name" : "preheat_set[6]",
-					"strict" : false
-				},
-				{
-					"name" : "preheat_set[7]",
-					"strict" : false
-				},
-				{
-					"name" : "run",
-					"strict" : false
-				},
-				{
-					"name" : "program_select[1]",
-					"strict" : false
-				},
-				{
-					"name" : "program_select[2]",
-					"strict" : false
-				},
-				{
-					"name" : "program_select[0]",
-					"strict" : false
-				},
-				{
-					"name" : "temp_reached",
-					"strict" : false
-				},
-				{
-					"name" : "cool_done",
-					"strict" : false
-				},
-				{
-					"name" : "time_done",
-					"strict" : false
-				},
-				{
-					"name" : "clk",
-					"strict" : false
-				},
-				{
-					"name" : "reset",
-					"strict" : false
-				},
-				{
-					"name" : "open_oven",
-					"strict" : false
-				},
-				{
-					"name" : "user_temp[0]",
-					"strict" : false
-				},
-				{
-					"name" : "user_temp[1]",
-					"strict" : false
-				},
-				{
-					"name" : "user_temp[2]",
-					"strict" : false
-				},
-				{
-					"name" : "user_temp[3]",
-					"strict" : false
-				},
-				{
-					"name" : "user_temp[4]",
-					"strict" : false
-				},
-				{
-					"name" : "user_temp[5]",
-					"strict" : false
-				},
-				{
-					"name" : "user_temp[6]",
-					"strict" : false
-				},
-				{
-					"name" : "user_temp[7]",
-					"strict" : false
-				},
-				{
-					"name" : "user_cook_time[0]",
-					"strict" : false
-				},
-				{
-					"name" : "user_cook_time[1]",
-					"strict" : false
-				},
-				{
-					"name" : "user_cook_time[2]",
-					"strict" : false
-				},
-				{
-					"name" : "user_cook_time[3]",
-					"strict" : false
-				},
-				{
-					"name" : "user_cook_time[4]",
-					"strict" : false
-				},
-				{
-					"name" : "user_cook_time[5]",
-					"strict" : false
-				},
-				{
-					"name" : "user_cook_time[6]",
-					"strict" : false
-				},
-				{
-					"name" : "user_cook_time[7]",
-					"strict" : false
-				},
-				{
-					"name" : "user_preheat_time[0]",
-					"strict" : false
-				},
-				{
-					"name" : "user_preheat_time[1]",
-					"strict" : false
-				},
-				{
-					"name" : "user_preheat_time[2]",
-					"strict" : false
-				},
-				{
-					"name" : "user_preheat_time[3]",
-					"strict" : false
-				},
-				{
-					"name" : "user_preheat_time[4]",
-					"strict" : false
-				},
-				{
-					"name" : "user_preheat_time[5]",
-					"strict" : false
-				},
-				{
-					"name" : "user_preheat_time[6]",
-					"strict" : false
-				},
-				{
-					"name" : "user_preheat_time[7]",
+					"name" : "CLOCK_50",
 					"strict" : false
 				}
 			]

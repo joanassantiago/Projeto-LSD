@@ -6,7 +6,7 @@ entity TimeControl is
     Port (
         clk         : in  std_logic;
         reset       : in  std_logic;
-		  enable      : in  std_logic;
+		  phORcook    : in  std_logic;
         time_up     : in  std_logic;
         time_down   : in  std_logic;
         time_preheat: out std_logic_vector(7 downto 0);
@@ -15,7 +15,7 @@ entity TimeControl is
 end TimeControl;
 
 architecture Behavioral of TimeControl is
-    signal timepreheat, timecook : unsigned(7 downto 0) := to_unsigned(0, 8);
+    signal timepreheat, timecook : unsigned(7 downto 0) := to_unsigned(0, 8); -- Tempo inicial de 0s
 begin
     process (clk, reset)
     begin
@@ -23,17 +23,25 @@ begin
 				timepreheat <= to_unsigned(0, 8);
             timecook <= to_unsigned(0, 8);
         elsif rising_edge(clk) then
-				if enable = '0' then 
+				if phORcook = '0' then -- Um switch que quando está a 0 define o tempo de pré-aquecimento
 					if time_up = '1' then
-						 timepreheat <= timepreheat + 1;
+						if timepreheat < "00110010" then -- Defini um tempo limite de 50s
+							timepreheat <= timepreheat + 1;
+						end if;
 					elsif time_down = '1' then
-						 timepreheat <= timepreheat - 1;
+						if timepreheat > "00000001" then
+							timepreheat <= timepreheat - 1;
+						end if;
 					end if;
-				else
+				else -- Quando está a 1 define o tempo de cocção
 					if time_up = '1' then
-						 timecook <= timecook + 1;
+						if timecook < "00110010" then
+							timecook <= timecook + 1;
+						end if;
 					elsif time_down = '1' then
-						 timecook <= timecook - 1;
+						if timecook > "00000001" then
+							timecook <= timecook - 1;
+						end if;
 					end if;
 				end if;
         end if;

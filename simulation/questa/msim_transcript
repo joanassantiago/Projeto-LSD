@@ -13,7 +13,7 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# do Airfryer_run_msim_rtl_vhdl.do
+# do AifryerController_run_msim_rtl_vhdl.do
 # if {[file exists rtl_work]} {
 # 	vdel -lib rtl_work -all
 # }
@@ -24,54 +24,43 @@
 # Copying c:/intelfpga_lite/23.1std/questa_fse/win64/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd}
+# vcom -93 -work work {C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd}
 # Questa Intel Starter FPGA Edition-64 vcom 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 18:40:38 on May 23,2024
-# vcom -reportprogress 300 -93 -work work C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/AirfryerFSM.vhd 
+# Start time: 19:14:52 on Jun 01,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity AirfryerFSM
 # -- Compiling architecture Behavioral of AirfryerFSM
-# End time: 18:40:38 on May 23,2024, Elapsed time: 0:00:00
+# End time: 19:14:53 on Jun 01,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
-vcom -reportprogress 300 -work work {C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/tb_AirfryerFSM.vhd}
+vcom -reportprogress 300 -work work {C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM_tb.vhd}
 # Questa Intel Starter FPGA Edition-64 vcom 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 18:40:57 on May 23,2024
-# vcom -reportprogress 300 -work work C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/tb_AirfryerFSM.vhd 
+# Start time: 19:15:10 on Jun 01,2024
+# vcom -reportprogress 300 -work work C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
-# -- Compiling entity tb_AirfryerFSM
-# -- Compiling architecture Behavioral of tb_AirfryerFSM
-# End time: 18:40:58 on May 23,2024, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-vcom -reportprogress 300 -work work {C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/tb_AirfryerFSM.vhd}
-# Questa Intel Starter FPGA Edition-64 vcom 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 18:41:00 on May 23,2024
-# vcom -reportprogress 300 -work work C:/Users/joana/OneDrive/Ambiente de Trabalho/Projeto LSD/tb_AirfryerFSM.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity tb_AirfryerFSM
-# -- Compiling architecture Behavioral of tb_AirfryerFSM
-# End time: 18:41:00 on May 23,2024, Elapsed time: 0:00:00
+# -- Compiling entity AirfryerFSM_tb
+# -- Compiling architecture Behavioral of AirfryerFSM_tb
+# -- Loading entity AirfryerFSM
+# End time: 19:15:10 on Jun 01,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Load canceled
-vsim work.tb_airfryerfsm
-# vsim work.tb_airfryerfsm 
-# Start time: 18:41:17 on May 23,2024
+vsim work.airfryerfsm_tb(behavioral)
+# vsim work.airfryerfsm_tb(behavioral) 
+# Start time: 19:15:24 on Jun 01,2024
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.tb_airfryerfsm(behavioral)#1
+# Loading work.airfryerfsm_tb(behavioral)#1
 # Loading work.airfryerfsm(behavioral)#1
 run
-# End time: 18:43:46 on May 23,2024, Elapsed time: 0:02:29
+# End time: 19:17:05 on Jun 01,2024, Elapsed time: 0:01:41
 # Errors: 0, Warnings: 0

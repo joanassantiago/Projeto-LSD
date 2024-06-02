@@ -1,0 +1,760 @@
+Analysis & Synthesis report for AifryerController
+Sun Jun  2 10:55:37 2024
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |AifryerController|AirfryerFSM:inst|current_state
+  9. User-Specified and Inferred Latches
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: ClkDividerN:inst7
+ 14. Parameter Settings for Inferred Entity Instance: TimerTemperature:inst10|lpm_divide:Mod0
+ 15. Parameter Settings for Inferred Entity Instance: TimerTemperature:inst10|lpm_divide:Div0
+ 16. Parameter Settings for Inferred Entity Instance: TimerTemperature:inst10|lpm_divide:Mod1
+ 17. Parameter Settings for Inferred Entity Instance: TimerTemperature:inst10|lpm_divide:Div1
+ 18. Parameter Settings for Inferred Entity Instance: TimerTemperature:inst10|lpm_divide:Mod2
+ 19. Parameter Settings for Inferred Entity Instance: TimerTime:inst11|lpm_divide:Mod0
+ 20. Parameter Settings for Inferred Entity Instance: TimerTime:inst11|lpm_divide:Div0
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Jun  2 10:55:37 2024          ;
+; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Revision Name                      ; AifryerController                              ;
+; Top-level Entity Name              ; AifryerController                              ;
+; Family                             ; Cyclone IV E                                   ;
+; Total logic elements               ; 591                                            ;
+;     Total combinational functions  ; 591                                            ;
+;     Dedicated logic registers      ; 84                                             ;
+; Total registers                    ; 84                                             ;
+; Total pins                         ; 51                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; AifryerController  ; AifryerController  ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                             ;
++----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                   ; Library ;
++----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------+---------+
+; TemperatureControl.vhd           ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TemperatureControl.vhd     ;         ;
+; TimeControl.vhd                  ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimeControl.vhd            ;         ;
+; TimerTime.vhd                    ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTime.vhd              ;         ;
+; AirfryerFSM.vhd                  ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd            ;         ;
+; TimerTemperature.vhd             ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd       ;         ;
+; Bin7SegDecoder.vhd               ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/Bin7SegDecoder.vhd         ;         ;
+; ClkDividerN.vhd                  ; yes             ; User VHDL File                     ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/ClkDividerN.vhd            ;         ;
+; AifryerController.bdf            ; yes             ; User Block Diagram/Schematic File  ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AifryerController.bdf      ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_divide.tdf       ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/abs_divider.inc      ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sign_div_unsign.inc  ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc       ;         ;
+; db/lpm_divide_q9m.tdf            ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/lpm_divide_q9m.tdf      ;         ;
+; db/sign_div_unsign_fkh.tdf       ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/sign_div_unsign_fkh.tdf ;         ;
+; db/alt_u_div_i4f.tdf             ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/alt_u_div_i4f.tdf       ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/add_sub_7pc.tdf         ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/add_sub_8pc.tdf         ;         ;
+; db/lpm_divide_jhm.tdf            ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/lpm_divide_jhm.tdf      ;         ;
+; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/sign_div_unsign_bkh.tdf ;         ;
+; db/alt_u_div_a4f.tdf             ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/alt_u_div_a4f.tdf       ;         ;
+; db/lpm_divide_mhm.tdf            ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/lpm_divide_mhm.tdf      ;         ;
+; db/sign_div_unsign_ekh.tdf       ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/sign_div_unsign_ekh.tdf ;         ;
+; db/alt_u_div_g4f.tdf             ; yes             ; Auto-Generated Megafunction        ; C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/alt_u_div_g4f.tdf       ;         ;
++----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                            ;
++---------------------------------------------+--------------------------+
+; Resource                                    ; Usage                    ;
++---------------------------------------------+--------------------------+
+; Estimated Total logic elements              ; 591                      ;
+;                                             ;                          ;
+; Total combinational functions               ; 591                      ;
+; Logic element usage by number of LUT inputs ;                          ;
+;     -- 4 input functions                    ; 148                      ;
+;     -- 3 input functions                    ; 173                      ;
+;     -- <=2 input functions                  ; 270                      ;
+;                                             ;                          ;
+; Logic elements by mode                      ;                          ;
+;     -- normal mode                          ; 402                      ;
+;     -- arithmetic mode                      ; 189                      ;
+;                                             ;                          ;
+; Total registers                             ; 84                       ;
+;     -- Dedicated logic registers            ; 84                       ;
+;     -- I/O registers                        ; 0                        ;
+;                                             ;                          ;
+; I/O pins                                    ; 51                       ;
+;                                             ;                          ;
+; Embedded Multiplier 9-bit elements          ; 0                        ;
+;                                             ;                          ;
+; Maximum fan-out node                        ; ClkDividerN:inst7|clkOut ;
+; Maximum fan-out                             ; 53                       ;
+; Total fan-out                               ; 1909                     ;
+; Average fan-out                             ; 2.46                     ;
++---------------------------------------------+--------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                    ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                        ; Entity Name         ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |AifryerController                        ; 591 (0)             ; 84 (0)                    ; 0           ; 0            ; 0       ; 0         ; 51   ; 0            ; |AifryerController                                                                                                                         ; AifryerController   ; work         ;
+;    |AirfryerFSM:inst|                     ; 73 (73)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|AirfryerFSM:inst                                                                                                        ; AirfryerFSM         ; work         ;
+;    |Bin7SegDecoder:inst2|                 ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|Bin7SegDecoder:inst2                                                                                                    ; Bin7SegDecoder      ; work         ;
+;    |Bin7SegDecoder:inst3|                 ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|Bin7SegDecoder:inst3                                                                                                    ; Bin7SegDecoder      ; work         ;
+;    |Bin7SegDecoder:inst4|                 ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|Bin7SegDecoder:inst4                                                                                                    ; Bin7SegDecoder      ; work         ;
+;    |Bin7SegDecoder:inst5|                 ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|Bin7SegDecoder:inst5                                                                                                    ; Bin7SegDecoder      ; work         ;
+;    |Bin7SegDecoder:inst6|                 ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|Bin7SegDecoder:inst6                                                                                                    ; Bin7SegDecoder      ; work         ;
+;    |ClkDividerN:inst7|                    ; 57 (57)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|ClkDividerN:inst7                                                                                                       ; ClkDividerN         ; work         ;
+;    |TemperatureControl:inst8|             ; 14 (14)             ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TemperatureControl:inst8                                                                                                ; TemperatureControl  ; work         ;
+;    |TimeControl:inst9|                    ; 24 (24)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimeControl:inst9                                                                                                       ; TimeControl         ; work         ;
+;    |TimerTemperature:inst10|              ; 235 (45)            ; 11 (11)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10                                                                                                 ; TimerTemperature    ; work         ;
+;       |lpm_divide:Div0|                   ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_jhm:auto_generated|  ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Div0|lpm_divide_jhm:auto_generated                                                   ; lpm_divide_jhm      ; work         ;
+;             |sign_div_unsign_bkh:divider| ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Div0|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh ; work         ;
+;                |alt_u_div_a4f:divider|    ; 56 (56)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Div0|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider ; alt_u_div_a4f       ; work         ;
+;       |lpm_divide:Div1|                   ; 25 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_mhm:auto_generated|  ; 25 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Div1|lpm_divide_mhm:auto_generated                                                   ; lpm_divide_mhm      ; work         ;
+;             |sign_div_unsign_ekh:divider| ; 25 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Div1|lpm_divide_mhm:auto_generated|sign_div_unsign_ekh:divider                       ; sign_div_unsign_ekh ; work         ;
+;                |alt_u_div_g4f:divider|    ; 25 (25)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Div1|lpm_divide_mhm:auto_generated|sign_div_unsign_ekh:divider|alt_u_div_g4f:divider ; alt_u_div_g4f       ; work         ;
+;       |lpm_divide:Mod0|                   ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_q9m:auto_generated|  ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Mod0|lpm_divide_q9m:auto_generated                                                   ; lpm_divide_q9m      ; work         ;
+;             |sign_div_unsign_fkh:divider| ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Mod0|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider                       ; sign_div_unsign_fkh ; work         ;
+;                |alt_u_div_i4f:divider|    ; 77 (77)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Mod0|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider ; alt_u_div_i4f       ; work         ;
+;       |lpm_divide:Mod1|                   ; 32 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Mod1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_q9m:auto_generated|  ; 32 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Mod1|lpm_divide_q9m:auto_generated                                                   ; lpm_divide_q9m      ; work         ;
+;             |sign_div_unsign_fkh:divider| ; 32 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Mod1|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider                       ; sign_div_unsign_fkh ; work         ;
+;                |alt_u_div_i4f:divider|    ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTemperature:inst10|lpm_divide:Mod1|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider ; alt_u_div_i4f       ; work         ;
+;    |TimerTime:inst11|                     ; 157 (24)            ; 11 (11)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTime:inst11                                                                                                        ; TimerTime           ; work         ;
+;       |lpm_divide:Div0|                   ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTime:inst11|lpm_divide:Div0                                                                                        ; lpm_divide          ; work         ;
+;          |lpm_divide_jhm:auto_generated|  ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTime:inst11|lpm_divide:Div0|lpm_divide_jhm:auto_generated                                                          ; lpm_divide_jhm      ; work         ;
+;             |sign_div_unsign_bkh:divider| ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTime:inst11|lpm_divide:Div0|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider                              ; sign_div_unsign_bkh ; work         ;
+;                |alt_u_div_a4f:divider|    ; 56 (56)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTime:inst11|lpm_divide:Div0|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider        ; alt_u_div_a4f       ; work         ;
+;       |lpm_divide:Mod0|                   ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTime:inst11|lpm_divide:Mod0                                                                                        ; lpm_divide          ; work         ;
+;          |lpm_divide_q9m:auto_generated|  ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTime:inst11|lpm_divide:Mod0|lpm_divide_q9m:auto_generated                                                          ; lpm_divide_q9m      ; work         ;
+;             |sign_div_unsign_fkh:divider| ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTime:inst11|lpm_divide:Mod0|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider                              ; sign_div_unsign_fkh ; work         ;
+;                |alt_u_div_i4f:divider|    ; 77 (77)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |AifryerController|TimerTime:inst11|lpm_divide:Mod0|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider        ; alt_u_div_i4f       ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |AifryerController|AirfryerFSM:inst|current_state                                                                   ;
++-----------------------+--------------------+----------------------+--------------------+-----------------------+--------------------+
+; Name                  ; current_state.COOL ; current_state.FINISH ; current_state.COOK ; current_state.PreHEAT ; current_state.IDLE ;
++-----------------------+--------------------+----------------------+--------------------+-----------------------+--------------------+
+; current_state.IDLE    ; 0                  ; 0                    ; 0                  ; 0                     ; 0                  ;
+; current_state.PreHEAT ; 0                  ; 0                    ; 0                  ; 1                     ; 1                  ;
+; current_state.COOK    ; 0                  ; 0                    ; 1                  ; 0                     ; 1                  ;
+; current_state.FINISH  ; 0                  ; 1                    ; 0                  ; 0                     ; 1                  ;
+; current_state.COOL    ; 1                  ; 0                    ; 0                  ; 0                     ; 1                  ;
++-----------------------+--------------------+----------------------+--------------------+-----------------------+--------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                            ;
++-----------------------------------------------------+---------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal             ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------------------+------------------------+
+; AirfryerFSM:inst|temp_set[0]                        ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|temp_set[1]                        ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|temp_set[7]                        ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|temp_set[6]                        ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|temp_set[5]                        ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|temp_set[4]                        ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|temp_set[3]                        ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|temp_set[2]                        ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|cook_time_set[0]                   ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|preheat_set[0]                     ; AirfryerFSM:inst|preheat_set[7] ; yes                    ;
+; AirfryerFSM:inst|cook_time_set[1]                   ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|preheat_set[1]                     ; AirfryerFSM:inst|preheat_set[7] ; yes                    ;
+; AirfryerFSM:inst|cook_time_set[2]                   ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|preheat_set[2]                     ; AirfryerFSM:inst|preheat_set[7] ; yes                    ;
+; AirfryerFSM:inst|cook_time_set[3]                   ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|preheat_set[3]                     ; AirfryerFSM:inst|preheat_set[7] ; yes                    ;
+; AirfryerFSM:inst|cook_time_set[7]                   ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|preheat_set[7]                     ; AirfryerFSM:inst|preheat_set[7] ; yes                    ;
+; AirfryerFSM:inst|cook_time_set[6]                   ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|preheat_set[6]                     ; AirfryerFSM:inst|preheat_set[7] ; yes                    ;
+; AirfryerFSM:inst|cook_time_set[5]                   ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|preheat_set[5]                     ; AirfryerFSM:inst|preheat_set[7] ; yes                    ;
+; AirfryerFSM:inst|cook_time_set[4]                   ; AirfryerFSM:inst|heating        ; yes                    ;
+; AirfryerFSM:inst|preheat_set[4]                     ; AirfryerFSM:inst|preheat_set[7] ; yes                    ;
+; Number of user-specified and inferred latches = 24  ;                                 ;                        ;
++-----------------------------------------------------+---------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 84    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 12    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 36    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; TemperatureControl:inst8|temperature[4] ; 3       ;
+; TemperatureControl:inst8|temperature[2] ; 3       ;
+; Total number of inverted registers = 2  ;         ;
++-----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |AifryerController|TimerTime:inst11|preheat_zero           ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |AifryerController|TemperatureControl:inst8|temperature[7] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |AifryerController|TimeControl:inst9|timecook[3]           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |AifryerController|TimeControl:inst9|timepreheat[6]        ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |AifryerController|TimerTemperature:inst10|s_counter[3]    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |AifryerController|TimerTime:inst11|counter[3]             ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |AifryerController|TemperatureControl:inst8|temperature[4] ;
+; 8:1                ; 11 bits   ; 55 LEs        ; 44 LEs               ; 11 LEs                 ; No         ; |AifryerController|AirfryerFSM:inst|Mux12                  ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; No         ; |AifryerController|AirfryerFSM:inst|Mux23                  ;
+; 11:1               ; 3 bits    ; 21 LEs        ; 12 LEs               ; 9 LEs                  ; No         ; |AifryerController|AirfryerFSM:inst|current_state          ;
+; 14:1               ; 2 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; No         ; |AifryerController|AirfryerFSM:inst|current_state          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ClkDividerN:inst7 ;
++----------------+----------+------------------------------------+
+; Parameter Name ; Value    ; Type                               ;
++----------------+----------+------------------------------------+
+; k              ; 50000000 ; Signed Integer                     ;
++----------------+----------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: TimerTemperature:inst10|lpm_divide:Mod0 ;
++------------------------+----------------+------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                           ;
++------------------------+----------------+------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                        ;
+; LPM_WIDTHD             ; 8              ; Untyped                                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                        ;
+; CBXI_PARAMETER         ; lpm_divide_q9m ; Untyped                                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                 ;
++------------------------+----------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: TimerTemperature:inst10|lpm_divide:Div0 ;
++------------------------+----------------+------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                           ;
++------------------------+----------------+------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                        ;
+; LPM_WIDTHD             ; 4              ; Untyped                                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                        ;
+; CBXI_PARAMETER         ; lpm_divide_jhm ; Untyped                                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                 ;
++------------------------+----------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: TimerTemperature:inst10|lpm_divide:Mod1 ;
++------------------------+----------------+------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                           ;
++------------------------+----------------+------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                        ;
+; LPM_WIDTHD             ; 8              ; Untyped                                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                        ;
+; CBXI_PARAMETER         ; lpm_divide_q9m ; Untyped                                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                 ;
++------------------------+----------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: TimerTemperature:inst10|lpm_divide:Div1 ;
++------------------------+----------------+------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                           ;
++------------------------+----------------+------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                        ;
+; LPM_WIDTHD             ; 7              ; Untyped                                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                        ;
+; CBXI_PARAMETER         ; lpm_divide_mhm ; Untyped                                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                 ;
++------------------------+----------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: TimerTemperature:inst10|lpm_divide:Mod2 ;
++------------------------+----------------+------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                           ;
++------------------------+----------------+------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                        ;
+; LPM_WIDTHD             ; 8              ; Untyped                                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                        ;
+; CBXI_PARAMETER         ; lpm_divide_q9m ; Untyped                                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                 ;
++------------------------+----------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: TimerTime:inst11|lpm_divide:Mod0 ;
++------------------------+----------------+-----------------------------------------+
+; Parameter Name         ; Value          ; Type                                    ;
++------------------------+----------------+-----------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                 ;
+; LPM_WIDTHD             ; 8              ; Untyped                                 ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_PIPELINE           ; 0              ; Untyped                                 ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                 ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                 ;
+; CBXI_PARAMETER         ; lpm_divide_q9m ; Untyped                                 ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                 ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                 ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                          ;
++------------------------+----------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: TimerTime:inst11|lpm_divide:Div0 ;
++------------------------+----------------+-----------------------------------------+
+; Parameter Name         ; Value          ; Type                                    ;
++------------------------+----------------+-----------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                 ;
+; LPM_WIDTHD             ; 4              ; Untyped                                 ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_PIPELINE           ; 0              ; Untyped                                 ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                 ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                 ;
+; CBXI_PARAMETER         ; lpm_divide_jhm ; Untyped                                 ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                 ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                 ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                          ;
++------------------------+----------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 51                          ;
+; cycloneiii_ff         ; 84                          ;
+;     ENA               ; 24                          ;
+;     ENA SLD           ; 12                          ;
+;     plain             ; 48                          ;
+; cycloneiii_lcell_comb ; 598                         ;
+;     arith             ; 189                         ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 75                          ;
+;         3 data inputs ; 111                         ;
+;     normal            ; 409                         ;
+;         0 data inputs ; 25                          ;
+;         1 data inputs ; 14                          ;
+;         2 data inputs ; 160                         ;
+;         3 data inputs ; 62                          ;
+;         4 data inputs ; 148                         ;
+;                       ;                             ;
+; Max LUT depth         ; 15.20                       ;
+; Average LUT depth     ; 8.26                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+    Info: Processing started: Sun Jun  2 10:55:22 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off AifryerController -c AifryerController
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file temperaturecontrol.vhd
+    Info (12022): Found design unit 1: TemperatureControl-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TemperatureControl.vhd Line: 15
+    Info (12023): Found entity 1: TemperatureControl File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TemperatureControl.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file timecontrol.vhd
+    Info (12022): Found design unit 1: TimeControl-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimeControl.vhd Line: 17
+    Info (12023): Found entity 1: TimeControl File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimeControl.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file timertime.vhd
+    Info (12022): Found design unit 1: TimerTime-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTime.vhd Line: 20
+    Info (12023): Found entity 1: TimerTime File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTime.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file airfryerfsm.vhd
+    Info (12022): Found design unit 1: AirfryerFSM-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 32
+    Info (12023): Found entity 1: AirfryerFSM File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file timertemperature.vhd
+    Info (12022): Found design unit 1: TimerTemperature-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 19
+    Info (12023): Found entity 1: TimerTemperature File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file airfryerfsm_tb.vhd
+    Info (12022): Found design unit 1: AirfryerFSM_tb-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM_tb.vhd Line: 8
+    Info (12023): Found entity 1: AirfryerFSM_tb File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM_tb.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file debounceunit.vhd
+    Info (12022): Found design unit 1: DebounceUnit-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/DebounceUnit.vhd Line: 15
+    Info (12023): Found entity 1: DebounceUnit File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/DebounceUnit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file bin7segdecoder.vhd
+    Info (12022): Found design unit 1: Bin7SegDecoder-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/Bin7SegDecoder.vhd Line: 9
+    Info (12023): Found entity 1: Bin7SegDecoder File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/Bin7SegDecoder.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file clkdividern.vhd
+    Info (12022): Found design unit 1: ClkDividerN-RTL File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/ClkDividerN.vhd Line: 11
+    Info (12023): Found entity 1: ClkDividerN File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/ClkDividerN.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file pulsegen.vhd
+    Info (12022): Found design unit 1: PulseGen-Behavioral File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/PulseGen.vhd Line: 12
+    Info (12023): Found entity 1: PulseGen File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/PulseGen.vhd Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file aifryercontroller.bdf
+    Info (12023): Found entity 1: AifryerController
+Info (12127): Elaborating entity "AifryerController" for the top level hierarchy
+Warning (275089): Not all bits in bus "SW[7..0]" are used
+Warning (275080): Converted elements in bus name "SW" using legacy naming rules. Make any assignments on the new names, not on the original names.
+    Warning (275081): Converted element name(s) from "SW[7]" to "SW7"
+    Warning (275081): Converted element name(s) from "SW[1]" to "SW1"
+    Warning (275081): Converted element name(s) from "SW[2]" to "SW2"
+    Warning (275081): Converted element name(s) from "SW[0]" to "SW0"
+    Warning (275081): Converted element name(s) from "SW[6..4]" to "SW6..4"
+Info (12128): Elaborating entity "Bin7SegDecoder" for hierarchy "Bin7SegDecoder:inst2"
+Info (12128): Elaborating entity "TimerTemperature" for hierarchy "TimerTemperature:inst10"
+Info (12128): Elaborating entity "ClkDividerN" for hierarchy "ClkDividerN:inst7"
+Info (12128): Elaborating entity "AirfryerFSM" for hierarchy "AirfryerFSM:inst"
+Warning (10541): VHDL Signal Declaration warning at AirfryerFSM.vhd(35): used implicit default value for signal "s_enable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 35
+Warning (10492): VHDL Process Statement warning at AirfryerFSM.vhd(67): signal "s_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 67
+Warning (10631): VHDL Process Statement warning at AirfryerFSM.vhd(54): inferring latch(es) for signal or variable "temp_set", which holds its previous value in one or more paths through the process File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Warning (10631): VHDL Process Statement warning at AirfryerFSM.vhd(54): inferring latch(es) for signal or variable "cook_time_set", which holds its previous value in one or more paths through the process File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Warning (10631): VHDL Process Statement warning at AirfryerFSM.vhd(54): inferring latch(es) for signal or variable "preheat_set", which holds its previous value in one or more paths through the process File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "preheat_set[0]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "preheat_set[1]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "preheat_set[2]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "preheat_set[3]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "preheat_set[4]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "preheat_set[5]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "preheat_set[6]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "preheat_set[7]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "cook_time_set[0]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "cook_time_set[1]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "cook_time_set[2]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "cook_time_set[3]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "cook_time_set[4]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "cook_time_set[5]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "cook_time_set[6]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "cook_time_set[7]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "temp_set[0]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "temp_set[1]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "temp_set[2]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "temp_set[3]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "temp_set[4]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "temp_set[5]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "temp_set[6]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (10041): Inferred latch for "temp_set[7]" at AirfryerFSM.vhd(54) File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+Info (12128): Elaborating entity "TimerTime" for hierarchy "TimerTime:inst11"
+Info (12128): Elaborating entity "TimeControl" for hierarchy "TimeControl:inst9"
+Info (12128): Elaborating entity "TemperatureControl" for hierarchy "TemperatureControl:inst8"
+Info (278001): Inferred 7 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "TimerTemperature:inst10|Mod0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 58
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "TimerTemperature:inst10|Div0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 59
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "TimerTemperature:inst10|Mod1" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 59
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "TimerTemperature:inst10|Div1" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 60
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "TimerTemperature:inst10|Mod2" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 60
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "TimerTime:inst11|Mod0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTime.vhd Line: 70
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "TimerTime:inst11|Div0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTime.vhd Line: 69
+Info (12130): Elaborated megafunction instantiation "TimerTemperature:inst10|lpm_divide:Mod0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 58
+Info (12133): Instantiated megafunction "TimerTemperature:inst10|lpm_divide:Mod0" with the following parameter: File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 58
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "8"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_q9m.tdf
+    Info (12023): Found entity 1: lpm_divide_q9m File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/lpm_divide_q9m.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_fkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_fkh File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/sign_div_unsign_fkh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_i4f.tdf
+    Info (12023): Found entity 1: alt_u_div_i4f File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/alt_u_div_i4f.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/add_sub_7pc.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/add_sub_8pc.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "TimerTemperature:inst10|lpm_divide:Div0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 59
+Info (12133): Instantiated megafunction "TimerTemperature:inst10|lpm_divide:Div0" with the following parameter: File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 59
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_jhm.tdf
+    Info (12023): Found entity 1: lpm_divide_jhm File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/lpm_divide_jhm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_bkh File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/sign_div_unsign_bkh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_a4f.tdf
+    Info (12023): Found entity 1: alt_u_div_a4f File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/alt_u_div_a4f.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "TimerTemperature:inst10|lpm_divide:Div1" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 60
+Info (12133): Instantiated megafunction "TimerTemperature:inst10|lpm_divide:Div1" with the following parameter: File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTemperature.vhd Line: 60
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_mhm.tdf
+    Info (12023): Found entity 1: lpm_divide_mhm File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/lpm_divide_mhm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_ekh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_ekh File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/sign_div_unsign_ekh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_g4f.tdf
+    Info (12023): Found entity 1: alt_u_div_g4f File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/alt_u_div_g4f.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "TimerTime:inst11|lpm_divide:Div0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTime.vhd Line: 69
+Info (12133): Instantiated megafunction "TimerTime:inst11|lpm_divide:Div0" with the following parameter: File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/TimerTime.vhd Line: 69
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Warning (13012): Latch AirfryerFSM:inst|preheat_set[0] has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW6
+Warning (13012): Latch AirfryerFSM:inst|preheat_set[1] has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW6
+Warning (13012): Latch AirfryerFSM:inst|preheat_set[2] has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW6
+Warning (13012): Latch AirfryerFSM:inst|preheat_set[3] has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW6
+Warning (13012): Latch AirfryerFSM:inst|preheat_set[7] has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW6
+Warning (13012): Latch AirfryerFSM:inst|preheat_set[6] has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW6
+Warning (13012): Latch AirfryerFSM:inst|preheat_set[5] has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW6
+Warning (13012): Latch AirfryerFSM:inst|preheat_set[4] has unsafe behavior File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/AirfryerFSM.vhd Line: 54
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW6
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX2[1]" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (17016): Found the following redundant logic cells in design
+    Info (17048): Logic cell "TimerTemperature:inst10|lpm_divide:Mod1|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider|add_sub_7_result_int[0]~0" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/alt_u_div_i4f.tdf Line: 62
+    Info (17048): Logic cell "TimerTemperature:inst10|lpm_divide:Mod1|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider|add_sub_6_result_int[0]~14" File: C:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/db/alt_u_div_i4f.tdf Line: 57
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 642 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 12 input pins
+    Info (21059): Implemented 39 output pins
+    Info (21061): Implemented 591 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 31 warnings
+    Info: Peak virtual memory: 4899 megabytes
+    Info: Processing ended: Sun Jun  2 10:55:37 2024
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:25
+
+

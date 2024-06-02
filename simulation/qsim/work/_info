@@ -1,0 +1,605 @@
+m255
+K4
+z2
+Z0 !s12c _opt1
+Z1 !s99 nomlopt
+Z2 !s12c _opt
+R1
+R2
+R1
+R2
+R1
+Z3 !s12c _opt2
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R0
+R1
+R2
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+!s11e vcom 2023.3 2023.07, Jul 17 2023
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z4 dC:/Users/joana/OneDrive/Ambiente de Trabalho/Testes/simulation/qsim
+T_opt
+!s110 1717237839
+VD497gD_JIkZlO?6VG[DUa1
+04 28 21 work timertemperature_vhd_vec_tst timertemperature_arch 1
+=1-6c2408b32213-665af84e-293-18f8
+R1
+Z5 !s12b OEM100
+Z6 !s124 OEM10U3 
+Z7 o-quiet -auto_acc_if_foreign -work work -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim +acc
+Z8 tCvgOpt 0
+n@_opt
+Z9 OL;O;2023.3;77
+R4
+T_opt1
+!s110 1717321983
+VH0EAN0f2dhClZc8=:hV?;0
+04 30 23 work temperaturecontrol_vhd_vec_tst temperaturecontrol_arch 1
+=1-6c2408b32213-665c40fe-3ad-4718
+R1
+R5
+R6
+R7
+R8
+n@_opt1
+R9
+R4
+T_opt2
+!s110 1717235884
+V3zIeQkb:K2CWIZkAGMWUC3
+04 21 14 work timertime_vhd_vec_tst timertime_arch 1
+=1-6c2408b32213-665af0ab-33b-2838
+R1
+R5
+R6
+R7
+R8
+n@_opt2
+R9
+R4
+Eaifryercontroller
+Z10 w1717321979
+Z11 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 JFD354ZMY?;ZG1UUQ_P^@1
+Z12 DPx10 cycloneive 21 cycloneive_components 0 22 :CA=Yg0R^TdJ3>^OGfeMR2
+Z13 DPx4 ieee 16 vital_primitives 0 22 Y]H?Y_]z4@VoaWAGJ=36m1
+Z14 DPx6 altera 11 dffeas_pack 0 22 mB4IFnUT3:DoZN@NS]Gzg0
+Z15 DPx4 ieee 12 vital_timing 0 22 6STbz=m1W[80IE06h_el^0
+Z16 DPx3 std 6 textio 0 22 LS[?81n5ZHWBI9JkBZTV<2
+Z17 DPx4 ieee 14 std_logic_1164 0 22 6<US`=mgl_dFdCEFF7J=m1
+Z18 DPx6 altera 28 altera_primitives_components 0 22 >1_OP3SHemAi5ZBLF?7g43
+!i122 42
+R4
+Z19 8AifryerController.vho
+Z20 FAifryerController.vho
+l0
+Z21 L80 1
+VJVknT3Z<<P1282ojFm1D31
+!s100 gRf?I3<n8fG38IH=fmLKU0
+Z22 OL;C;2023.3;77
+32
+!s110 1717321981
+!i10b 1
+Z23 !s108 1717321981.000000
+Z24 !s90 -work|work|AifryerController.vho|
+Z25 !s107 AifryerController.vho|
+!i113 0
+Z26 o-work work
+Z27 tExplicit 1 CvgOpt 0
+Astructure
+R11
+R12
+R13
+R14
+R15
+R16
+R17
+R18
+DEx4 work 17 aifryercontroller 0 22 JVknT3Z<<P1282ojFm1D31
+!i122 42
+l994
+L155 12907
+V3BnGAWfVlWQRFhznLFGWN3
+!s100 cj=zmhj>egVZD;YW_eoG32
+R22
+32
+Z28 !s110 1717321982
+!i10b 1
+R23
+R24
+R25
+!i113 0
+R26
+R27
+Eaifryercontroller_vhd_vec_tst
+Z29 w1717321978
+R16
+R17
+!i122 43
+R4
+Z30 8Waveform1.vwf.vht
+Z31 FWaveform1.vwf.vht
+l0
+Z32 L32 1
+VKY_C=25d:7VmA9Ek33>e?1
+!s100 66fXCNb5ONA<BcY=89VVI0
+R22
+32
+R28
+!i10b 1
+Z33 !s108 1717321982.000000
+Z34 !s90 -work|work|Waveform1.vwf.vht|
+Z35 !s107 Waveform1.vwf.vht|
+!i113 0
+R26
+R27
+Aaifryercontroller_arch
+R16
+R17
+DEx4 work 29 aifryercontroller_vhd_vec_tst 0 22 KY_C=25d:7VmA9Ek33>e?1
+!i122 43
+l73
+L34 61
+VnoJdzOKDTfGf[Z``hfIl;0
+!s100 Sm@NPTY<]JJ0U8eWnWcM40
+R22
+32
+R28
+!i10b 1
+R33
+R34
+R35
+!i113 0
+R26
+R27
+Ehard_block
+Z36 w1717322087
+R13
+R11
+R15
+R16
+R17
+R12
+!i122 44
+R4
+R19
+R20
+l0
+L35 1
+VO;cUSklm4Sig<`__bK=J@0
+!s100 0CTYib@dc:ObIVR9DRSK?2
+R22
+32
+Z37 !s110 1717322089
+!i10b 1
+Z38 !s108 1717322089.000000
+R24
+R25
+!i113 0
+R26
+R27
+Astructure
+R13
+R11
+R15
+R16
+R17
+R12
+DEx4 work 10 hard_block 0 22 O;cUSklm4Sig<`__bK=J@0
+!i122 44
+l65
+L51 20
+VGLY:g5RDEe^dIV`12>FYD3
+!s100 6LcB1AebN6j_bAmfc?Z:_0
+R22
+32
+R37
+!i10b 1
+R38
+R24
+R25
+!i113 0
+R26
+R27
+Etemperaturecontrol
+R36
+R11
+R12
+R13
+R14
+R15
+R16
+R17
+R18
+!i122 44
+R4
+R19
+R20
+l0
+R21
+VYaaSRkVOffklOKA3aA0EN2
+!s100 j6ihK5S7:<?5fNAP_Fn2Y3
+R22
+32
+R37
+!i10b 1
+R38
+R24
+R25
+!i113 0
+R26
+R27
+Astructure
+R11
+R12
+R13
+R14
+R15
+R16
+R17
+R18
+DEx4 work 18 temperaturecontrol 0 22 YaaSRkVOffklOKA3aA0EN2
+!i122 44
+l166
+L105 614
+VQjo`Ec]4al>LPG^lTf11a0
+!s100 7kYd7FFz>eaedYG5=6KjA2
+R22
+32
+R37
+!i10b 1
+R38
+R24
+R25
+!i113 0
+R26
+R27
+Etemperaturecontrol_vhd_vec_tst
+Z39 w1717322086
+R16
+R17
+!i122 45
+R4
+R30
+R31
+l0
+R32
+Vi[?DKkjP8EFNKm;oAP3PW1
+!s100 0Yd^]5J:B;5O`Jd<QjQDU1
+R22
+32
+R37
+!i10b 1
+R38
+R34
+R35
+!i113 0
+R26
+R27
+Atemperaturecontrol_arch
+R16
+R17
+Z40 DEx4 work 30 temperaturecontrol_vhd_vec_tst 0 22 i[?DKkjP8EFNKm;oAP3PW1
+!i122 45
+l51
+Z41 L34 67
+Z42 V5KCM;Sg[KXlNPmY^lPOaC2
+Z43 !s100 g`gSF`i;47ZIJcz`RnKNa2
+R22
+32
+R37
+!i10b 1
+R38
+R34
+R35
+!i113 0
+R26
+R27
+Etimecontrol
+Z44 w1717234616
+R11
+R12
+R13
+R14
+R15
+R16
+R17
+R18
+!i122 25
+R4
+R19
+R20
+l0
+R21
+Vn2[;6;T7QJz^jlzSEJ?OS3
+!s100 ];X:ZDec5HeQ_YJ5M3BER1
+R22
+32
+Z45 !s110 1717234618
+!i10b 1
+Z46 !s108 1717234617.000000
+R24
+R25
+!i113 0
+R26
+R27
+Astructure
+R11
+R12
+R13
+R14
+R15
+R16
+R17
+R18
+DEx4 work 11 timecontrol 0 22 n2[;6;T7QJz^jlzSEJ?OS3
+!i122 25
+l208
+L116 1122
+Vim9S25hgHYJo>d>NOX=zj3
+!s100 nTzMN6Ybknz9z==k6hFB<2
+R22
+32
+R45
+!i10b 1
+R46
+R24
+R25
+!i113 0
+R26
+R27
+Etimecontrol_vhd_vec_tst
+Z47 w1717234614
+R16
+R17
+!i122 26
+R4
+Z48 8Waveform2.vwf.vht
+Z49 FWaveform2.vwf.vht
+l0
+R32
+V_]<V4WXIQF90`gV_`K?kC2
+!s100 akY9o<GcoRhPk;aSl;EFo1
+R22
+32
+R45
+!i10b 1
+Z50 !s108 1717234618.000000
+Z51 !s90 -work|work|Waveform2.vwf.vht|
+Z52 !s107 Waveform2.vwf.vht|
+!i113 0
+R26
+R27
+Atimecontrol_arch
+R16
+R17
+DEx4 work 23 timecontrol_vhd_vec_tst 0 22 _]<V4WXIQF90`gV_`K?kC2
+!i122 26
+l55
+L34 102
+Vfh59@zAmZn_[gIaP<1C]S3
+!s100 BR1In7NIAndWd3WKP[XV^0
+R22
+32
+R45
+!i10b 1
+R50
+R51
+R52
+!i113 0
+R26
+R27
+Etimertemperature
+Z53 w1717237836
+R11
+R12
+R13
+R14
+R15
+R16
+R17
+R18
+!i122 40
+R4
+R19
+R20
+l0
+R21
+V2RlN:UVYba_1CB<YEani30
+!s100 TS<;An:>B1H?<O8zL@N?62
+R22
+32
+Z54 !s110 1717237837
+!i10b 1
+Z55 !s108 1717237837.000000
+R24
+R25
+!i113 0
+R26
+R27
+Astructure
+R11
+R12
+R13
+R14
+R15
+R16
+R17
+R18
+DEx4 work 16 timertemperature 0 22 2RlN:UVYba_1CB<YEani30
+!i122 40
+l481
+L124 4848
+V7`Gb:C7`WnzQLkDfXAfU_2
+!s100 zdTDhbd44oA`9F8bimz;B0
+R22
+32
+R54
+!i10b 1
+R55
+R24
+R25
+!i113 0
+R26
+R27
+Etimertemperature_vhd_vec_tst
+Z56 w1717237834
+R16
+R17
+!i122 41
+R4
+Z57 8Waveform3.vwf.vht
+Z58 FWaveform3.vwf.vht
+l0
+R32
+V<`_Tnl^A624>olOfLCPGR1
+!s100 h^14_0<bSeSBz`kPTajmN2
+R22
+32
+Z59 !s110 1717237838
+!i10b 1
+R55
+Z60 !s90 -work|work|Waveform3.vwf.vht|
+Z61 !s107 Waveform3.vwf.vht|
+!i113 0
+R26
+R27
+Atimertemperature_arch
+R16
+R17
+DEx4 work 28 timertemperature_vhd_vec_tst 0 22 <`_Tnl^A624>olOfLCPGR1
+!i122 41
+l61
+L34 134
+Vj:KZe74_:U>jXD>kQh_Xk1
+!s100 KMhzRF]kag4oVHXSEO`V93
+R22
+32
+R59
+!i10b 1
+R55
+R60
+R61
+!i113 0
+R26
+R27
+Etimertime
+Z62 w1717235881
+R11
+R12
+R13
+R14
+R15
+R16
+R17
+R18
+!i122 34
+R4
+R19
+R20
+l0
+R21
+VE1ho6?R7B?BHg=]P5<=Tb0
+!s100 09E;Zk4PB>mKnOgcMf9VN1
+R22
+32
+!s110 1717235882
+!i10b 1
+Z63 !s108 1717235882.000000
+R24
+R25
+!i113 0
+R26
+R27
+Astructure
+R11
+R12
+R13
+R14
+R15
+R16
+R17
+R18
+DEx4 work 9 timertime 0 22 E1ho6?R7B?BHg=]P5<=Tb0
+!i122 34
+l397
+L128 3562
+VS2H]gKkIS@[UcCEf<l^eQ0
+!s100 dU8IHK8jdn]6A:<Um]0Oh2
+R22
+32
+Z64 !s110 1717235883
+!i10b 1
+R63
+R24
+R25
+!i113 0
+R26
+R27
+Etimertime_vhd_vec_tst
+Z65 w1717235879
+R16
+R17
+!i122 35
+R4
+Z66 8Waveform.vwf.vht
+Z67 FWaveform.vwf.vht
+l0
+R32
+Vk[lYk1dU8c[mT8NIkhEh42
+!s100 Q1CTfM[0eIAkYMN1DlQ6R3
+R22
+32
+R64
+!i10b 1
+Z68 !s108 1717235883.000000
+Z69 !s90 -work|work|Waveform.vwf.vht|
+Z70 !s107 Waveform.vwf.vht|
+!i113 0
+R26
+R27
+Atimertime_arch
+R16
+R17
+DEx4 work 21 timertime_vhd_vec_tst 0 22 k[lYk1dU8c[mT8NIkhEh42
+!i122 35
+l61
+L34 182
+VW2:F`lo>WzKFBAejXK_YF2
+!s100 I>IO^EG:?f90ZIG@>jA`00
+R22
+32
+R64
+!i10b 1
+R68
+R69
+R70
+!i113 0
+R26
+R27

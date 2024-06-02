@@ -41,8 +41,8 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 64)
 		(input)
-		(text "enable" (rect 0 0 24 12)(font "Arial" ))
-		(text "enable" (rect 21 59 45 71)(font "Arial" ))
+		(text "phORcook" (rect 0 0 43 12)(font "Arial" ))
+		(text "phORcook" (rect 21 59 64 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 1))
 	)
 	(port

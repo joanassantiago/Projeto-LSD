@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Jun  2 10:55:37 2024
+Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+Revision Name : AifryerController
+Top-level Entity Name : AifryerController
+Family : Cyclone IV E
+Total logic elements : 591
+    Total combinational functions : 591
+    Dedicated logic registers : 84
+Total registers : 84
+Total pins : 51
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

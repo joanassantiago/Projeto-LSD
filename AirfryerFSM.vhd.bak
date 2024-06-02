@@ -1,128 +1,218 @@
 library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
 
-entity AirfryerFSM is
-    Port (
-        clk           : in  std_logic;
-        reset         : in  std_logic;
-        on_off        : in  std_logic;
-        run           : in  std_logic;
-        open_oven     : in  std_logic;
-        programs      : in  std_logic_vector(2 downto 0);
-        food_in       : out std_logic;
-        finish        : out std_logic;
-        cool_done     : out std_logic;
-        target_temp   : out std_logic_vector(7 downto 0);
-        current_temp  : in  std_logic_vector(7 downto 0);
-        temp_reached  : in  std_logic;
-        time_set      : out INTEGER range 0 to 255;
-        current_time  : in  INTEGER range 0 to 255
-    );
-end AirfryerFSM;
+entity Menu is
+	port(CLK		: in  std_logic;
+		  ON_OFF	: in  std_logic;
+		  reset: in std_logic;
+		  PROGRAMA: in std_logic_vector(6 downto 0);
+		  RUN	: in  std_logic;
+		  TEMPERATURA: in std_logic_vector(7 downto 0);
+		  PRE_HEAT: in std_logic_vector(5 downto 0);
+		  COZINHAR: in std_logic_vector(5 downto 0);
+		  TIMES_UP: in std_logic;
+		  OPEN_OVEN: in std_logic;
+		  COOL_FINISHED: in std_logic;
+		  
+		  
+		  ------------------------------------------
+		  HEATING_COOLING,LOAD_PH, LOAD_COOK,START: out std_logic;
+		  TEMPERATURA_OUT:  out std_logic_vector(7 downto 0);
+		  TIME_COOKING, TIME_PREHEAT: out std_logic_vector(5 downto 0);
+		  STATUS: out std_logic_vector(4 downto 0));
+end Menu;
 
-architecture Behav of AirfryerFSM is
-    type State is (OFF, IDLE, PreHEAT, COOK, FINISH, COOL);
-    signal s_currentState, s_nextState : State;
+architecture Behavioral of Menu is
 
-    -- Parâmetros de temperatura e tempo para cada programa
-    type ProgramType is record
-        temperature : integer;
-        time        : integer;
-    end record;
-
-    constant DEFAULT    : ProgramType := (200, 18);
-    constant USER       : ProgramType := (0, 0);  -- Pode ser ajustado pelo usuário
-    constant RISSOIS    : ProgramType := (180, 15);
-    constant BATATA     : ProgramType := (190, 25);
-    constant FILETES    : ProgramType := (170, 20);
-    constant HAMBURGUER : ProgramType := (180, 12);
-
-    signal selected_program : ProgramType := DEFAULT;
+	type TState is (IDLE, USER, RISSOIS, BATATAS, FILETES, HAMBURGUER, VEGETAIS, PRE_HEAT_STATE, COOK, FINISH, COOL);
+	signal s_currentState, s_nextState : TState;
+	signal s_temp: std_logic_vector(7 downto 0);
+	signal s_time,s_preheat:std_logic_vector(5 downto 0);
+	signal s_status: std_logic_vector(4 downto 0);
 
 begin
+	sync_proc : process(clk)
+	begin
+		if (rising_edge(clk)) then
+			if (reset = '1') then
+				s_currentState <= IDLE;
+			else
+				s_currentState <= s_nextState;
+			end if;
+		end if;
+	end process;
 
-    sync_proc : process(clk)
-    begin
-        if rising_edge(clk) then
-            if reset = '1' then
-                s_currentState <= OFF;
-            else
-                s_currentState <= s_nextState;
-            end if;
-        end if;
-    end process;
-
-    combproc : process(s_currentState, on_off, run, open_oven, programs, temp_reached, current_time)
-    begin
-        -- Valores padrões para evitar latchs
-        s_nextState <= s_currentState;
-        food_in <= '0';
-        finish <= '0';
-        cool_done <= '0';
-        target_temp <= x"00"; -- Default value
-        time_set <= 0; -- Default value
-
-        case s_currentState is
-            when OFF =>
-                if on_off = '1' then
+	
+	comb_proc : process(s_currentState, PROGRAMA, RUN)
+	begin
+		case (s_currentState) is
+		when IDLE =>
+			s_status <= "00001";
+			s_temp <= std_logic_vector(to_unsigned(200, 8));
+			s_time <=std_logic_vector(to_unsigned(18, 6));
+			s_preheat <=(others => '0');
+			
+			
+				if RUN = '1' then
+                    case PROGRAMA is
+                        when "0000000" => s_nextState <= COOK;
+                        when "0000001" => s_nextState <= USER;
+                        when "0000010" => s_nextState <= RISSOIS;
+                        when "0000100" => s_nextState <= BATATAS;
+                        when "0001000" => s_nextState <= FILETES;
+                        when "0010000" => s_nextState <= HAMBURGUER;
+                        when "0100000" => s_nextState <= VEGETAIS;
+                        when others => s_nextState <= IDLE;
+                    end case;
+                else
                     s_nextState <= IDLE;
                 end if;
+			
 
-            when IDLE =>
-                if on_off = '0' then
-                    s_nextState <= OFF;
-                elsif run = '1' then
-                    -- Seleção do programa
-                    case programs is
-                        when "000" => selected_program <= DEFAULT;
-                        when "001" => selected_program <= USER;
-                        when "010" => selected_program <= RISSOIS;
-                        when "011" => selected_program <= BATATA;
-                        when "100" => selected_program <= FILETES;
-                        when "101" => selected_program <= HAMBURGUER;
-                        when others => selected_program <= DEFAULT;
-                    end case;
+		when USER =>
+			s_status <= "00001";
+			s_temp <= TEMPERATURA;
+			s_time <=COZINHAR;
+			s_preheat <=PRE_HEAT;
+			
+			
+			if (RUN = '1') then
+				s_nextState <= PRE_HEAT_STATE ;
+			else
+				s_nextState <= USER;
+			end if;
 
-                    target_temp <= to_stdlogicvector(to_unsigned(selected_program.temperature, 8));
-                    time_set <= selected_program.time;
-                    s_nextState <= PreHEAT;
-                end if;
+		when RISSOIS =>
+			s_status <= "00001";
+			s_temp <= std_logic_vector(to_unsigned(180, 8));
+			s_time <=std_logic_vector(to_unsigned(15, 6));
+			s_preheat <=std_logic_vector(to_unsigned(3, 6));
+			
+			
+			if (RUN = '1' and OPEN_OVEN='0') then
+				s_nextState <= PRE_HEAT_STATE;
+			else
+				s_nextState <= RISSOIS;
+			end if;
 
-            when PreHEAT =>
-                if temp_reached = '1' then
-                    s_nextState <= COOK;
-                else
-                    s_nextState <= PreHEAT;
-                end if;
+		when BATATAS =>
+			s_status <= "00001";
+			s_temp <= std_logic_vector(to_unsigned(200, 8));
+			s_time <=std_logic_vector(to_unsigned(20, 6));
+			s_preheat <=std_logic_vector(to_unsigned(5, 6));
+			
+			
+			if (RUN = '1' and OPEN_OVEN='0') then
+				s_nextState <=PRE_HEAT_STATE;
+			else
+				s_nextState <= BATATAS;
+			end if;
+			
+		when FILETES =>
+			s_status <= "00001";
+			s_temp <= std_logic_vector(to_unsigned(120, 8));
+			s_time <=std_logic_vector(to_unsigned(20, 6));
+			s_preheat <=std_logic_vector(to_unsigned(3, 6));
+			
+			if (RUN = '1' and OPEN_OVEN='0') then
+				s_nextState <=PRE_HEAT_STATE;
+			else
+				s_nextState <= FILETES;
+			end if;
+		when HAMBURGUER =>
+			s_status <= "00001";
+			s_temp <= std_logic_vector(to_unsigned(170, 8));
+			s_time <=std_logic_vector(to_unsigned(20, 6));
+			s_preheat <=std_logic_vector(to_unsigned(5, 6));
+			
+			
+			if (RUN = '1' and OPEN_OVEN='0') then
+				s_nextState <=PRE_HEAT_STATE;
+			else
+				s_nextState <= HAMBURGUER;
+			end if;
+		
+		when VEGETAIS =>
+			s_status <= "00001";
+			s_temp <= std_logic_vector(to_unsigned(160, 8));
+			s_time <=std_logic_vector(to_unsigned(20, 6));
+			s_preheat <=(others => '0');
+			
+			
+			if (RUN = '1' and OPEN_OVEN='0') then
+				s_nextState <= COOK;
+			else
+				s_nextState <= VEGETAIS;
+			end if;
+			
+		when PRE_HEAT_STATE =>
+			s_status <= "00010";
+			TEMPERATURA_OUT<= s_temp;
+			TIME_COOKING <=s_time;
+			TIME_PREHEAT<= s_preheat;
+			HEATING_COOLING<='0';
+			LOAD_PH<='1';
+			START<='1';
+			LOAD_COOK<='0';
+			if TIMES_UP='1' then
+				
+				if (OPEN_OVEN='1') then
+					s_nextState <= COOK;
+				else
+					s_nextState <=PRE_HEAT_STATE;
+				end if;
+			end if;
+			
+		when COOK =>
+			s_status <= "00100";
+			TEMPERATURA_OUT <= s_temp;
+			TIME_COOKING <=s_time;
+			TIME_PREHEAT<= s_preheat;
+			HEATING_COOLING<='0';
+			
+			if (OPEN_OVEN = '0' and RUN='1') then
+				LOAD_COOK<='1';
+				START<='1';
+				if TIMES_UP='1' then 
+					s_nextState <= FINISH;
+				else
+					s_nextState <= COOK;
+				end if;
+			end if;
+			
+		when FINISH =>
+			s_status <= "01000";
+			TEMPERATURA_OUT <= s_temp;
+			TIME_COOKING <=(others => '0');
+			TIME_PREHEAT<= (others => '0');
+			
+			if (OPEN_OVEN= '1') then
+				HEATING_COOLING<='1';
+				s_nextState <= COOL;
+				
+			else
+				s_nextState <= FINISH;
+			end if;
+			
+			
+		when COOL =>
+			s_status <= "10000";
+			TEMPERATURA_OUT <= s_temp;
+			TIME_COOKING <=(others => '0');
+			TIME_PREHEAT <=(others => '0');
+			HEATING_COOLING<='1';
+			
+			if (COOL_FINISHED='1') then
+				s_nextState <= IDLE;
+			else
+				s_nextState <= COOL;
+			end if;
+		end case;
+		
+	STATUS<=s_status;
+	
 
-            when COOK =>
-                if open_oven = '1' or current_time = 0 then
-                    s_nextState <= FINISH;
-                else
-                    food_in <= '1';
-                    s_nextState <= COOK;
-                end if;
+	end process;
 
-            when FINISH =>
-                finish <= '1';
-                if open_oven = '1' then
-                    s_nextState <= COOL;
-                else
-                    s_nextState <= FINISH;
-                end if;
-
-            when COOL =>
-                if current_time = 0 then
-                    cool_done <= '1';
-                    s_nextState <= OFF;
-                else
-                    s_nextState <= COOL;
-                end if;
-
-            when others =>
-                s_nextState <= OFF;
-        end case;
-    end process;
-
-end Behav;
+end Behavioral;
